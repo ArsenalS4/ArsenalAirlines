@@ -407,6 +407,15 @@ function shuffleArray(array) {
 
 function initExam() {
   currentQuestions = shuffleArray(QUESTION_POOL).slice(0, 30);
+  
+  // Shuffle answers for each question
+  currentQuestions.forEach(q => {
+    const correctAnswer = q.answers[q.correct];
+    const shuffled = shuffleArray(q.answers.map((ans, idx) => ({ ans, idx })));
+    q.answers = shuffled.map(item => item.ans);
+    q.correct = shuffled.findIndex(item => item.idx === q.correct);
+  });
+  
   currentQuestionIndex = 0;
   score = 0;
   answered = false;
