@@ -585,31 +585,98 @@ function showResults() {
 }
 
 function handleFormSubmit(e) {
-  e.preventDefault();
-  
-  const formResponse = document.getElementById('form-response');
-  formResponse.classList.remove('hidden');
-  formResponse.innerHTML = `
+    e.preventDefault();
+
+    // Your live Discord Webhook URL
+    const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1511883347339644989/RCYLZuwBDp-xLC1xG_rUR97CRZgmXI8S4JhGxkujap_SDi0mTTprmgA17aFbCcs3oDiW';
+
+    const formResponse = document.getElementById('form-response');
+    formResponse.classList.remove('hidden');
+    formResponse.innerHTML = `
     <div class="loading-spinner">
       <div class="spinner"></div>
       <p>TRANSMITTING TO INSTRUCTOR CADRE...</p>
     </div>
   `;
-  
-  setTimeout(() => {
-    formResponse.innerHTML = `
+
+    // Get form values
+    const discordUser = document.getElementById('discord').value;
+    const callsignUser = document.getElementById('callsign').value;
+    const availabilityUser = document.getElementById('availability').value;
+
+    // Automatically detect which exam they completed based on page URL
+    const examType = window.location.pathname.includes('huey') ? 'Huey (UH-1H)' : 'Little Bird (MH-6)';
+    const percentage = ((score / 30) * 100).toFixed(1);
+
+    // Format a tactical Discord embed payload
+    const discordPayload = {
+        username: "Wardogs Flight Command",
+        embeds: [
+            {
+                title: "🚨 NEW PILOT LICENSING APPLICATION 🚨",
+                description: "A candidate has successfully passed the written examination and is ready for a practical evaluation.",
+                color: 16763904, // Tactical Amber/Yellow in decimal
+                fields: [
+                    {
+                        name: "👤 Candidate Details",
+                        value: `**Discord:** ${discordUser}\n**Callsign:** ${callsignUser}`,
+                        inline: false
+                    },
+                    {
+                        name: "🛸 Exam Performance",
+                        value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 30 (${percentage}%)`,
+                        inline: false
+                    },
+                    {
+                        name: "📅 Availability & Timezone",
+                        value: availabilityUser,
+                        inline: false
+                    }
+                ],
+                footer: {
+                    text: "Wardogs Unofficial Flight Academy • Remember the rules: Crash = Fail"
+                },
+                timestamp: new Date().toISOString()
+            }
+        ]
+    };
+
+    // Perform the actual network request to Discord
+    fetch(DISCORD_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(discordPayload)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to transmit application to Discord.');
+            }
+
+            // Show success message once the request is complete
+            formResponse.innerHTML = `
       <div class="success-message">
-        <h3 style="color: var(--tactical-yellow); margin-bottom: 20px;">✓ NOTIFICATION SENT</h3>
-        <p>Your written exam results are with the Instructors. Stand by for contact via Discord to schedule your in-game practical check ride.</p>
+        <h3 style="color: var(--tactical-yellow); margin-bottom: 20px;">✓ TRANSMISSION SUCCESSFUL</h3>
+        <p>Your written exam results have been registered. Stand by for contact via Discord to schedule your in-game practical check ride.</p>
         <p style="margin-top: 20px; color: var(--tactical-red); font-weight: 700;">REMEMBER THE RULES:</p>
         <p style="color: var(--tactical-red);">If you crash, you fail.</p>
         <p style="color: var(--tactical-red);">If you are too slow, you fail.</p>
         <p style="margin-top: 20px;">Precision and speed are mandatory. Good luck, pilot.</p>
       </div>
     `;
-    
-    document.getElementById('cert-form').style.display = 'none';
-  }, 2000);
-}
 
-initExam();
+            document.getElementById('cert-form').style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Error submitting application:', error);
+
+            // Fallback if the webhook fails
+            formResponse.innerHTML = `
+      <div class="success-message" style="border-color: var(--tactical-red);">
+        <h3 style="color: var(--tactical-red); margin-bottom: 20px;">⚠️ TRANSMISSION ERROR</h3>
+        <p>There was a connection issue forwarding your application to our database. Please take a screenshot of your passing score (${score}/30) and contact an instructor directly on Discord.</p>
+      </div>
+    `;
+        });
+}
