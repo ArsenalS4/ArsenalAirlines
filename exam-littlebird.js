@@ -481,78 +481,78 @@ function displayQuestion() {
 }
 
 function checkAnswer(selectedIndex) {
-  if (answered) return;
-  
-  answered = true;
-  const question = currentQuestions[currentQuestionIndex];
-  const answerButtons = document.querySelectorAll('.answer-btn');
-  const explanationContainer = document.getElementById('explanation-container');
-  
-  answerButtons.forEach(btn => btn.disabled = true);
-  
-  if (selectedIndex === question.correct) {
-    score++;
-    answerButtons[selectedIndex].classList.add('correct');
-  } else {
-    answerButtons[selectedIndex].classList.add('incorrect');
-    answerButtons[question.correct].classList.add('correct');
-  }
-  
-  explanationContainer.innerHTML = `
+    if (answered) return;
+
+    answered = true;
+    const question = currentQuestions[currentQuestionIndex];
+    const answerButtons = document.querySelectorAll('.answer-btn');
+    const explanationContainer = document.getElementById('explanation-container');
+
+    answerButtons.forEach(btn => btn.disabled = true);
+
+    if (selectedIndex === question.correct) {
+        score++;
+        answerButtons[selectedIndex].classList.add('correct');
+    } else {
+        answerButtons[selectedIndex].classList.add('incorrect');
+        answerButtons[question.correct].classList.add('correct');
+    }
+
+    explanationContainer.innerHTML = `
     <div class="explanation">
       <strong>EXPLANATION:</strong> ${question.explanation}
     </div>
   `;
-  
-  document.getElementById('next-btn').classList.remove('hidden');
-  updateProgress();
+
+    document.getElementById('next-btn').classList.remove('hidden');
+    updateProgress();
 }
 
 function updateProgress() {
-  document.getElementById('current-q').textContent = currentQuestionIndex + 1;
-  document.getElementById('score').textContent = score;
-  const percentage = ((score / (currentQuestionIndex + (answered ? 1 : 0))) * 100).toFixed(0);
-  document.getElementById('percentage').textContent = percentage + '%';
+    document.getElementById('current-q').textContent = currentQuestionIndex + 1;
+    document.getElementById('score').textContent = score;
+    const percentage = ((score / (currentQuestionIndex + (answered ? 1 : 0))) * 100).toFixed(0);
+    document.getElementById('percentage').textContent = percentage + '%';
 }
 
 function nextQuestion() {
-  currentQuestionIndex++;
-  
-  if (currentQuestionIndex >= currentQuestions.length) {
-    showResults();
-  } else {
-    displayQuestion();
-  }
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex >= currentQuestions.length) {
+        showResults();
+    } else {
+        displayQuestion();
+    }
 }
 
 function showResults() {
-  const container = document.getElementById('question-container');
-  const resultContainer = document.getElementById('result-container');
-  const formContainer = document.getElementById('form-container');
-  
-  container.classList.add('hidden');
-  document.getElementById('exam-progress').classList.add('hidden');
-  resultContainer.classList.remove('hidden');
-  
-  const percentage = ((score / 30) * 100).toFixed(1);
-  const passed = score >= 27;
-  
-  resultContainer.innerHTML = `
+    const container = document.getElementById('question-container');
+    const resultContainer = document.getElementById('result-container');
+    const formContainer = document.getElementById('form-container');
+
+    container.classList.add('hidden');
+    document.getElementById('exam-progress').classList.add('hidden');
+    resultContainer.classList.remove('hidden');
+
+    const percentage = ((score / 30) * 100).toFixed(1);
+    const passed = score >= 27; // 90% of 30 is 27
+
+    resultContainer.innerHTML = `
     <div class="result-screen ${passed ? 'pass' : 'fail'}">
       <div class="result-status">${passed ? 'PASS' : 'FAIL'}</div>
       <div class="result-score">${score} / 30 (${percentage}%)</div>
       <div class="result-message">
-        ${passed 
-          ? 'You have passed the Little Bird written examination. Complete the form below to schedule your in-game practical check ride with an instructor.'
-          : 'You did not achieve the required 90% passing score. Review the material and retake the examination.'}
+        ${passed
+            ? 'You have passed the Little Bird written examination. Complete the form below to schedule your in-game practical check ride with an instructor.'
+            : 'You did not achieve the required 90% passing score. Review the material and retake the examination.'}
       </div>
       ${!passed ? '<button class="btn" onclick="location.reload()">RETAKE EXAM</button>' : ''}
     </div>
   `;
-  
-  if (passed) {
-    formContainer.classList.remove('hidden');
-    formContainer.innerHTML = `
+
+    if (passed) {
+        formContainer.classList.remove('hidden');
+        formContainer.innerHTML = `
       <div class="form-container">
         <h2>POST-EXAM CERTIFICATION FORM</h2>
         <p>Your written exam results will be forwarded to the instructor cadre. Complete this form to begin the practical scheduling process.</p>
@@ -579,15 +579,14 @@ function showResults() {
         <div id="form-response" class="hidden"></div>
       </div>
     `;
-    
-    document.getElementById('cert-form').addEventListener('submit', handleFormSubmit);
-  }
+
+        document.getElementById('cert-form').addEventListener('submit', handleFormSubmit);
+    }
 }
 
 function handleFormSubmit(e) {
     e.preventDefault();
 
-    // Your live Discord Webhook URL
     const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1511883347339644989/RCYLZuwBDp-xLC1xG_rUR97CRZgmXI8S4JhGxkujap_SDi0mTTprmgA17aFbCcs3oDiW';
 
     const formResponse = document.getElementById('form-response');
@@ -599,23 +598,20 @@ function handleFormSubmit(e) {
     </div>
   `;
 
-    // Get form values
     const discordUser = document.getElementById('discord').value;
     const callsignUser = document.getElementById('callsign').value;
     const availabilityUser = document.getElementById('availability').value;
 
-    // Automatically detect which exam they completed based on page URL
     const examType = window.location.pathname.includes('huey') ? 'Huey (UH-1H)' : 'Little Bird (MH-6)';
     const percentage = ((score / 30) * 100).toFixed(1);
 
-    // Format a tactical Discord embed payload
     const discordPayload = {
         username: "Wardogs Flight Command",
         embeds: [
             {
                 title: "🚨 NEW PILOT LICENSING APPLICATION 🚨",
                 description: "A candidate has successfully passed the written examination and is ready for a practical evaluation.",
-                color: 16763904, // Tactical Amber/Yellow in decimal
+                color: 16763904,
                 fields: [
                     {
                         name: "👤 Candidate Details",
@@ -641,7 +637,6 @@ function handleFormSubmit(e) {
         ]
     };
 
-    // Perform the actual network request to Discord
     fetch(DISCORD_WEBHOOK_URL, {
         method: 'POST',
         headers: {
@@ -654,7 +649,6 @@ function handleFormSubmit(e) {
                 throw new Error('Failed to transmit application to Discord.');
             }
 
-            // Show success message once the request is complete
             formResponse.innerHTML = `
       <div class="success-message">
         <h3 style="color: var(--tactical-yellow); margin-bottom: 20px;">✓ TRANSMISSION SUCCESSFUL</h3>
@@ -670,8 +664,6 @@ function handleFormSubmit(e) {
         })
         .catch(error => {
             console.error('Error submitting application:', error);
-
-            // Fallback if the webhook fails
             formResponse.innerHTML = `
       <div class="success-message" style="border-color: var(--tactical-red);">
         <h3 style="color: var(--tactical-red); margin-bottom: 20px;">⚠️ TRANSMISSION ERROR</h3>
@@ -680,3 +672,5 @@ function handleFormSubmit(e) {
     `;
         });
 }
+
+initExam();
