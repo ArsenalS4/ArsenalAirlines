@@ -558,7 +558,7 @@ function handleFormSubmit(e) {
     e.preventDefault();
 
     // Paste your Cloudflare Worker URL here:
-    const CLOUDFLARE_WORKER_URL = 'https://wardogswebhook.caelebwoodrow.workers.dev';
+    const CLOUDFLARE_WORKER_URL = 'https://arsenapapi.arsenalapi.workers.dev';
 
     const formResponse = document.getElementById('form-response');
     formResponse.classList.remove('hidden');
