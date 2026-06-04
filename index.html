@@ -3,8 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WARDOGS Pilot Licensing Portal - Home</title>
+  <title>WARDOGS Pilot Licensing Portal - Rotary Wing Certification | Unofficial Fan Site</title>
+  <meta name="description" content="Unofficial WARDOGS helicopter pilot licensing portal. Get certified for Little Bird and Huey rotary-wing operations with comprehensive written exams and practical evaluations.">
+  <meta name="keywords" content="WARDOGS, pilot license, helicopter certification, Little Bird, Huey, UH-1H, rotary wing, tactical FPS, BULKHEAD, flight training, pilot exam">
+  <meta name="author" content="WARDOGS Fan Community">
+  <link rel="canonical" href="https://wardogspilots.com/">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="WARDOGS Pilot Licensing Portal - Helicopter Certification">
+  <meta property="og:description" content="Unofficial fan-created pilot licensing portal for WARDOGS tactical FPS. Little Bird and Huey certification exams available.">
+  <meta property="og:image" content="/WD_RevealKeyArt_4K.png">
+  <meta property="og:url" content="https://wardogspilots.com/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WARDOGS Pilot Licensing Portal">
+  <meta name="twitter:description" content="Unofficial helicopter pilot certification for WARDOGS. Get licensed for Little Bird and Huey operations.">
+  <meta name="twitter:image" content="/WD_RevealKeyArt_4K.png">
+  
   <link rel="stylesheet" href="shared.css">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "WARDOGS Pilot Licensing Portal",
+    "description": "Unofficial fan-created helicopter pilot certification portal for WARDOGS tactical FPS",
+    "url": "https://wardogspilots.com/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "WARDOGS Fan Community"
+    },
+    "about": {
+      "@type": "VideoGame",
+      "name": "WARDOGS",
+      "publisher": {
+        "@type": "Organization",
+        "name": "BULKHEAD"
+      }
+    }
+  }
+  </script>
 </head>
 <body>
   <div class="disclaimer">
@@ -23,8 +64,8 @@
     </div>
   </nav>
 
-  <section class="hero">
-    <img src="/WD_Screenshot_Littlebird_1.jpg" alt="Little Bird in action" class="hero-bg">
+  <section class="hero" role="banner">
+    <img src="/WD_Screenshot_Littlebird_1.jpg" alt="Little Bird helicopter with soldiers flying over mountainous terrain at sunset in WARDOGS" class="hero-bg">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>PILOT LICENSING</h1>
@@ -32,29 +73,32 @@
     </div>
   </section>
 
-  <main>
-    <section class="content-section">
+  <main role="main">
+    <section class="content-section" itemscope itemtype="https://schema.org/Table">
       <h2>THE ROSTER</h2>
       <p>All approved pilots authorized for rotary-wing operations in WARDOGS combat zones. Licenses issued after successful completion of written examination (90% minimum) and in-game practical evaluation.</p>
+      <p class="roster-note">Tip: Click a callsign in the roster to view that pilot's detailed stats.</p>
       
-      <table class="roster-table">
-        <thead>
-          <tr>
-            <th>CALLSIGN</th>
-            <th>LICENSE CLASS</th>
-            <th>INSTRUCTOR</th>
-            <th>ISSUE DATE</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ARSENAL</td>
-            <td><span class="license-badge">DUAL</span></td>
-            <td>ADMIN</td>
-            <td>June 1st</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrapper">
+        <table class="roster-table">
+          <thead>
+            <tr>
+              <th>CALLSIGN</th>
+              <th>LICENSE CLASS</th>
+              <th>INSTRUCTOR</th>
+              <th>ISSUE DATE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><button class="pilot-link" data-pilot="ARSENAL">ARSENAL</button></td>
+              <td><span class="license-badge">DUAL</span></td>
+              <td>ADMIN</td>
+              <td>June 1st</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section class="content-section">
@@ -64,6 +108,44 @@
     </section>
   </main>
 
+  <!-- Pilot Stats Modal -->
+  <div id="pilot-modal" class="pilot-modal hidden" aria-hidden="true">
+    <div class="pilot-modal-backdrop"></div>
+    <div class="pilot-modal-content" role="dialog" aria-modal="true" aria-labelledby="pilot-name">
+      <button class="pilot-modal-close" id="pilot-modal-close" aria-label="Close pilot stats">✕</button>
+      <h2 id="pilot-name" class="pilot-modal-title">PILOT STATS</h2>
+      <p class="pilot-modal-callsign">Callsign: <span id="pilot-callsign">ARSENAL</span></p>
+
+      <div class="pilot-modal-body">
+        <div class="pilot-survival">
+          <svg class="survival-chart" viewBox="0 0 120 120">
+            <circle class="survival-bg" cx="60" cy="60" r="50" />
+            <circle class="survival-fg" cx="60" cy="60" r="50" />
+          </svg>
+          <div class="survival-label">
+            <div class="survival-percent" id="survival-percent">92%</div>
+            <div class="survival-caption">SURVIVAL RATE</div>
+          </div>
+        </div>
+
+        <div class="pilot-stats-box">
+          <div class="pilot-stat-row">
+            <span class="pilot-stat-label">Successful Flights</span>
+            <span class="pilot-stat-value" id="pilot-successful">376</span>
+          </div>
+          <div class="pilot-stat-row">
+            <span class="pilot-stat-label">Casualties (Team Kills)</span>
+            <span class="pilot-stat-value" id="pilot-casualties">43</span>
+          </div>
+          <div class="pilot-stat-row">
+            <span class="pilot-stat-label">Avg Flights per Life</span>
+            <span class="pilot-stat-value" id="pilot-average">13</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-disclaimer">
       ⚠️ UNOFFICIAL WARDOGS PILOT LICENSING PORTAL - FAN CREATED ⚠️
@@ -72,5 +154,83 @@
       WARDOGS is a trademark of BULKHEAD. This portal is an unofficial fan project and is not affiliated with or endorsed by BULKHEAD.
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const pilotData = {
+        ARSENAL: {
+          callsign: 'ARSENAL',
+          survivalRate: 92,
+          successfulFlights: 376,
+          casualties: 43,
+          averageFlightsPerLife: 13
+        }
+      };
+
+      const modal = document.getElementById('pilot-modal');
+      const closeBtn = document.getElementById('pilot-modal-close');
+      const callsignEl = document.getElementById('pilot-callsign');
+      const percentEl = document.getElementById('survival-percent');
+      const successEl = document.getElementById('pilot-successful');
+      const casualtiesEl = document.getElementById('pilot-casualties');
+      const averageEl = document.getElementById('pilot-average');
+      const survivalCircle = document.querySelector('.survival-fg');
+
+      const RADIUS = 50;
+      const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
+      if (survivalCircle) {
+        survivalCircle.style.strokeDasharray = CIRCUMFERENCE;
+        survivalCircle.style.strokeDashoffset = CIRCUMFERENCE;
+      }
+
+      function setSurvival(rate) {
+        const offset = CIRCUMFERENCE - (rate / 100) * CIRCUMFERENCE;
+        survivalCircle.style.strokeDashoffset = offset;
+        percentEl.textContent = rate.toFixed(0) + '%';
+      }
+
+      function openPilotStats(id) {
+        const data = pilotData[id];
+        if (!data) return;
+
+        callsignEl.textContent = data.callsign;
+        successEl.textContent = data.successfulFlights;
+        casualtiesEl.textContent = data.casualties;
+        averageEl.textContent = data.averageFlightsPerLife;
+        setSurvival(data.survivalRate);
+
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closePilotStats() {
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('.pilot-link');
+        if (link) {
+          const id = link.getAttribute('data-pilot');
+          openPilotStats(id);
+        }
+
+        if (e.target.classList.contains('pilot-modal-backdrop')) {
+          closePilotStats();
+        }
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closePilotStats);
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closePilotStats();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

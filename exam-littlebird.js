@@ -1,3 +1,4 @@
+// Why the fuck are you here reading the source code? Go study.
 const QUESTION_POOL = [
   {
     question: "During a high-speed low-level pass in a Little Bird, what is the primary aerodynamic concern?",
@@ -418,6 +419,325 @@ const QUESTION_POOL = [
     answers: ["Identify any malfunctions or damage before next flight", "Cool down engines", "Log flight time", "Prepare for passenger loading"],
     correct: 0,
     explanation: "Post-landing checks identify any systems damage, malfunctions, or abnormal indications that occurred during flight, ensuring discrepancies are logged and addressed before the next flight, maintaining airworthiness and safety."
+  },
+  {
+    question: "What is the primary aerodynamic limitation that defines VNE (velocity never exceed) in a Little Bird?",
+    answers: [
+      "Retreating blade stall, compressibility effects on advancing blade, and control system feedback forces.",
+      "Maximum engine torque output, transmission temperature limits, and fuel flow restrictions at high speed.",
+      "Tail boom flutter, main rotor hub bearing temperature, and hydraulic system pressure loss at high dynamic pressure.",
+      "Structural airframe limits, canopy bird strike resistance, and landing gear retraction mechanism failure."
+    ],
+    correct: 0,
+    explanation: "VNE is primarily determined by aerodynamic limits: retreating blade approaches stall, advancing blade nears transonic speeds causing compressibility issues, and control forces become dangerously high."
+  },
+  {
+    question: "During a Little Bird autorotation, what is the effect of a tailwind on the required landing flare technique?",
+    answers: [
+      "The flare must be initiated earlier and more aggressively due to higher groundspeed and reduced time to dissipate energy.",
+      "The flare must be delayed and reduced in magnitude because the tailwind component increases rotor efficiency.",
+      "The flare timing remains unchanged as autorotation technique is based purely on indicated airspeed, not groundspeed.",
+      "The flare must be eliminated entirely; instead, the pilot should execute a purely vertical touchdown with collective only."
+    ],
+    correct: 0,
+    explanation: "A tailwind increases groundspeed while airspeed remains constant. The pilot must flare earlier and more aggressively to dissipate the additional ground speed energy before touchdown, or risk sliding beyond the landing area."
+  },
+  {
+    question: "What is 'Blade Sailing' in a Little Bird, and when is it most likely to occur?",
+    answers: [
+      "Excessive blade flapping during engine start/shutdown in high winds, potentially striking the tail boom or fuselage.",
+      "Uncontrolled blade acceleration during takeoff from excessive collective application at low rotor RPM.",
+      "Aerodynamic blade stall during high-G maneuvers causing individual blades to lose lift and fall behind in rotation.",
+      "Harmonic oscillation of blades at cruise speed causing metal fatigue and eventual catastrophic blade separation."
+    ],
+    correct: 0,
+    explanation: "Blade sailing occurs when rotor blades flap excessively during low-RPM conditions (start/shutdown) in strong winds. Without sufficient centrifugal force to keep blades rigid, they can flap dangerously close to or strike the airframe."
+  },
+  {
+    question: "In a Little Bird, what is the purpose of lead-lag hinges (or equivalent damper system) in the rotor hub?",
+    answers: [
+      "They allow blades to move fore and aft in the plane of rotation, dissipating Coriolis forces and preventing structural damage.",
+      "They permit vertical blade flapping to compensate for dissymmetry of lift during forward flight operations.",
+      "They enable collective pitch changes by allowing the swashplate to tilt and translate vertically on the mast.",
+      "They provide hydraulic damping to the cyclic control system, reducing pilot control input sensitivity."
+    ],
+    correct: 0,
+    explanation: "Lead-lag hinges allow blades to speed up or slow down slightly in the plane of rotation, accommodating Coriolis forces as blades flap. Without this, the blades would experience destructive bending moments at the root."
+  },
+  {
+    question: "What is the recommended recovery procedure if a Little Bird experiences an inadvertent IMC (instrument meteorological conditions) entry?",
+    answers: [
+      "Transition to instrument scan immediately, establish level flight attitude, execute a 180° turn to exit IMC if trained and able.",
+      "Increase airspeed to VNE, descend rapidly to break out below the cloud layer, then continue flight visually.",
+      "Reduce power to idle, enter autorotation, and attempt to maintain wings-level descent using only outside visual cues.",
+      "Climb to maximum altitude, transmit mayday on guard frequency, and await radar vectoring from ATC to nearest airport."
+    ],
+    correct: 0,
+    explanation: "Non-instrument rated pilots are extremely vulnerable to spatial disorientation in IMC. Immediate transition to instruments, maintaining level flight, and executing a 180° turn to exit the conditions is critical. Continued flight in IMC is often fatal."
+  },
+  {
+    question: "What is 'Coriolis Effect' as it applies to helicopter rotor blades during flight?",
+    answers: [
+      "As blades flap up, they slow down; as they flap down, they speed up, due to conservation of angular momentum.",
+      "As collective is raised, blades twist aerodynamically, causing a phase shift in the lift vector by 90 degrees.",
+      "As cyclic is displaced, blades generate differential lift, causing the entire rotor disk to tilt in the desired direction.",
+      "As airspeed increases, blades experience compressibility effects, causing shock waves to form on the advancing side."
+    ],
+    correct: 0,
+    explanation: "The Coriolis effect causes blade speed changes as they flap. When a blade flaps up (shorter radius to hub), it speeds up; when it flaps down (longer radius), it slows down—similar to a figure skater pulling arms in/out during a spin."
+  },
+  {
+    question: "In a Little Bird, what is the primary cause of 'Ground Resonance,' and how is it prevented?",
+    answers: [
+      "Imbalanced lead-lag damping causes oscillations that couple with landing gear, amplifying until structural failure; prevented by proper damper maintenance.",
+      "Excessive rotor RPM during taxi causes harmonic vibrations in the engine mounts; prevented by limiting ground speed to 5 knots.",
+      "Asymmetric fuel loading creates center of gravity shifts; prevented by maintaining balanced fuel consumption between tanks.",
+      "Main rotor blade tracking errors create vibrations; prevented by performing rotor track and balance before each flight."
+    ],
+    correct: 0,
+    explanation: "Ground resonance occurs when rotor blade lead-lag dampers fail or malfunction, allowing blades to become asymmetrically spaced. These oscillations couple with the landing gear, rapidly amplifying into catastrophic structural failure. Immediate takeoff or shutdown is required."
+  },
+  {
+    question: "What is the effect of high-density altitude on Little Bird engine performance?",
+    answers: [
+      "Reduced air density decreases mass airflow through the engine, reducing power output and increasing turbine temperatures.",
+      "Increased air density increases engine backpressure, causing compressor stalls and requiring reduced throttle settings.",
+      "Decreased air density improves combustion efficiency, increasing available power but reducing fuel economy significantly.",
+      "Increased air density creates excess cooling, reducing engine temperatures but causing oil viscosity problems."
+    ],
+    correct: 0,
+    explanation: "High density altitude means thin air. Less air mass enters the engine, reducing combustion efficiency and power output. The engine must work harder (higher temperatures) to produce the same power, while producing less total power available."
+  },
+  {
+    question: "What is the danger of 'Overpitching' the rotor system during a Little Bird takeoff?",
+    answers: [
+      "Excessive collective at low RPM causes rotor droop, potential engine/transmission overtorque, and loss of lift.",
+      "Too much collective causes the tail rotor to stall, resulting in immediate loss of directional control and spinning.",
+      "Excessive blade pitch creates compressibility shock waves, causing blades to separate from the hub structurally.",
+      "Too much collective causes hydraulic system pressure to drop to zero, resulting in locked flight controls."
+    ],
+    correct: 0,
+    explanation: "Overpitching occurs when the pilot raises collective too quickly or too much before rotor RPM is adequate. This loads the rotor excessively, causing RPM to droop dangerously, potentially overtorquing the drivetrain, and reducing lift when it's most needed."
+  },
+  {
+    question: "In a Little Bird, what is 'Effective Translational Lift,' and how does the pilot recognize its onset?",
+    answers: [
+      "Improved rotor efficiency at 16-24 knots as helicopter outruns downwash; recognized by decreased power requirement and slight climb/vibration.",
+      "Increased drag at 40-50 knots from transitioning to forward flight regime; recognized by increased power requirement and nose-down pitch.",
+      "Loss of tail rotor authority at 5-10 knots during slow flight; recognized by yaw oscillations and difficulty maintaining heading.",
+      "Enhanced ground effect at speeds below 5 knots; recognized by reduced collective requirements and improved hover stability."
+    ],
+    correct: 0,
+    explanation: "ETL occurs around 16-24 knots as the helicopter accelerates out of its own turbulent downwash into clean air. This dramatically improves rotor efficiency, often felt as a slight 'bump' or vibration and tendency to climb unless collective is reduced."
+  },
+  {
+    question: "What is the correct procedure for a Little Bird engine failure during cruise flight at 2,000 feet AGL?",
+    answers: [
+      "Immediately lower collective, establish autorotation airspeed (~60 knots), select landing area, and plan energy management for landing.",
+      "Attempt engine restart procedure first, maintain altitude using stored rotor energy, then enter autorotation if restart fails.",
+      "Increase collective to maximum, attempt to gain altitude, transmit mayday, then enter autorotation from higher altitude.",
+      "Maintain current airspeed and altitude, feather collective precisely to maintain zero rate of climb/descent, and await engine restart."
+    ],
+    correct: 0,
+    explanation: "Engine failure requires immediate entry into autorotation: lower collective to maintain rotor RPM, establish best glide speed, select a suitable landing area, and manage rotor energy for a controlled landing. Delays waste altitude."
+  },
+  {
+    question: "What causes 'Mast Bumping' in teetering rotor systems, and what makes it catastrophic?",
+    answers: [
+      "Low-G maneuvers allow rotor to flap excessively; abrupt cyclic inputs cause the hub to strike the mast, severing it instantly.",
+      "High-speed flight causes blade tips to exceed Mach 1; supersonic shock waves fracture the mast at its weakest point.",
+      "Excessive collective application causes rotor to cone upward; blades strike the mast and shear it at the hub attachment.",
+      "Autorotation descent causes blade droop; insufficient flare energy allows blades to contact the mast during touchdown."
+    ],
+    correct: 0,
+    explanation: "Mast bumping occurs in low-G conditions (e.g., pushing over after a pull-up). The rotor becomes unloaded and can flap excessively. Abrupt lateral cyclic then causes the hub to tilt and strike the mast, causing instant catastrophic failure."
+  },
+  {
+    question: "What is the purpose of the 'droop stops' on a Little Bird's rotor system?",
+    answers: [
+      "They limit downward blade flapping when rotor RPM is low, preventing blades from striking the fuselage or tail boom.",
+      "They prevent excessive upward blade coning during high-G maneuvers, protecting the main rotor mast from overstress.",
+      "They restrict lead-lag motion beyond safe limits, preventing ground resonance from developing during taxi operations.",
+      "They lock the swashplate in neutral position during engine start, preventing uncommanded collective or cyclic inputs."
+    ],
+    correct: 0,
+    explanation: "Droop stops are mechanical limits that prevent blades from drooping too far down when the rotor is stopped or spinning slowly. Without sufficient centrifugal force, gravity would pull blades down into the airframe."
+  },
+  {
+    question: "In a Little Bird formation flight, what is the primary hazard of flying through the lead aircraft's rotor wash?",
+    answers: [
+      "Severe turbulence and sudden loss of lift can cause uncommanded altitude loss and control difficulties for the wingman.",
+      "Ingestion of turbulent air into the engine causes compressor stalls, flameouts, and forced autorotation entries.",
+      "Main rotor blade tip vortices from lead create harmonic vibrations, causing structural fatigue and blade cracks.",
+      "Increased relative wind from rotor wash causes tail rotor vortex ring state and loss of anti-torque authority."
+    ],
+    correct: 0,
+    explanation: "Lead aircraft rotor wash creates severe turbulence and downwash. A wingman flying through this can experience sudden loss of lift and violent turbulence, potentially causing altitude loss and control problems, especially at low altitude."
+  },
+  {
+    question: "What is the correct procedure for a Little Bird slope landing on a 10° slope?",
+    answers: [
+      "Approach into the slope, land upslope skid first, hold cyclic into slope as downslope skid is lowered, maintain rotor disc level.",
+      "Approach parallel to slope, land both skids simultaneously, apply cyclic away from slope to prevent rollover immediately.",
+      "Approach downslope, land downslope skid first, apply cyclic into slope, then raise collective to level the helicopter.",
+      "Approach perpendicular to slope, land tail first, pivot on tail skid, then lower nose skid while reducing collective."
+    ],
+    correct: 0,
+    explanation: "Slope landings require approaching into the slope, touching the uphill skid first while keeping the rotor disc level (cyclic into slope). The downhill skid is then carefully lowered with cyclic held into the slope to prevent dynamic rollover."
+  },
+  {
+    question: "What is 'Transverse Flow Effect' in a Little Bird, and at what airspeed is it most noticeable?",
+    answers: [
+      "Differential airflow through front/rear of rotor disk causes right roll at 10-20 knots; corrected with left cyclic input.",
+      "Crosswind component creates asymmetric lift distribution at 40-50 knots; corrected with coordinated pedal and cyclic.",
+      "Tail rotor thrust creates lateral drift at 5-10 knots in hover; corrected by holding cyclic into the wind direction.",
+      "Engine torque reaction causes nose-left yaw at all speeds; corrected with continuous right pedal pressure input."
+    ],
+    correct: 0,
+    explanation: "Transverse flow effect occurs at 10-20 knots when airflow through the rear of the rotor disc is more vertical (more efficient) than the front. Due to gyroscopic precession, this causes a roll to the right, requiring left cyclic correction."
+  },
+  {
+    question: "What is the primary aerodynamic danger of a Little Bird quick-stop maneuver?",
+    answers: [
+      "Excessive aft cyclic causes tail boom to rise, risking tail rotor strike on main rotor blades during deceleration.",
+      "Rapid deceleration causes main rotor to overspeed beyond structural limits, resulting in blade shedding and loss of control.",
+      "Quick power reduction causes engine flameout from fuel starvation, requiring immediate autorotation entry and landing.",
+      "Sudden airspeed loss causes tail rotor vortex ring state, resulting in complete loss of directional control and spinning."
+    ],
+    correct: 0,
+    explanation: "During a quick stop, aggressive aft cyclic causes the tail boom to rise. If the pilot doesn't arrest the attitude and level the helicopter before stopping, the tail can rise into the main rotor arc, causing catastrophic tail rotor strike."
+  },
+  {
+    question: "What is the effect of a tail rotor failure in forward flight above effective translational lift?",
+    answers: [
+      "Reduced yaw tendency due to weathervaning effect; pilot can maintain control and execute a run-on landing if airspeed is maintained.",
+      "Immediate uncontrolled spin to the right; pilot must enter autorotation and execute vertical landing with zero forward speed.",
+      "Complete loss of directional control at all airspeeds; pilot must immediately shut down engine and execute forced landing.",
+      "No effect on controllability; tail rotor is not needed in forward flight above 40 knots due to aerodynamic stabilization."
+    ],
+    correct: 0,
+    explanation: "In forward flight above ETL, the vertical stabilizer provides weathervaning stability, reducing yaw tendency. With reduced power (lower torque), directional control can be maintained long enough to land, preferably in a run-on configuration."
+  },
+  {
+    question: "What is 'Autorotative Force' in a helicopter rotor system?",
+    answers: [
+      "The aerodynamic force region where upward airflow through the rotor disk drives blade rotation without engine power.",
+      "The centrifugal force generated by spinning blades that provides structural rigidity to the rotor system in flight.",
+      "The gyroscopic force that causes the rotor disk to maintain its plane of rotation despite aircraft attitude changes.",
+      "The electromagnetic force in the generator that maintains battery charge during engine-off autorotation descents."
+    ],
+    correct: 0,
+    explanation: "During autorotation, upward airflow through the rotor creates a force region on each blade where the relative wind angle produces a forward component, driving rotation. This region allows the rotor to continue spinning without engine power."
+  },
+  {
+    question: "In a Little Bird, what is the 'Height-Velocity Diagram,' and why is it critical?",
+    answers: [
+      "A chart showing altitude/airspeed combinations where safe autorotation landing is impossible; the 'avoid' region pilots must stay out of.",
+      "A graph depicting maximum rate of climb versus density altitude; used to calculate takeoff performance at various temperatures.",
+      "A diagram showing fuel consumption versus cruise speed; used to determine maximum range and endurance flight profiles.",
+      "A chart displaying rotor RPM limits versus collective pitch setting; used to prevent overtorquing during takeoff climbs."
+    ],
+    correct: 0,
+    explanation: "The Height-Velocity or 'Dead Man's Curve' shows combinations of altitude and airspeed where, in the event of engine failure, there is insufficient time/energy to execute a successful autorotation before ground impact."
+  },
+  {
+    question: "What is the correct recovery from an inadvertent vortex ring state in a Little Bird?",
+    answers: [
+      "Lower collective to reduce descent rate into vortex, apply forward cyclic to gain airspeed and exit disturbed air laterally.",
+      "Raise collective to maximum to power out of the vortex, simultaneously applying aft cyclic to reduce rate of descent.",
+      "Enter full autorotation immediately, raise collective to maximum before touchdown, execute running landing at high speed.",
+      "Apply maximum right pedal to spin out of the vortex, then level wings with cyclic and increase power slowly."
+    ],
+    correct: 0,
+    explanation: "Vortex ring state (settling with power) recovery requires breaking out of the recirculating downwash. Lower collective (reduce power demand/descent rate), apply forward or lateral cyclic to gain translational lift and move into clean air."
+  },
+  {
+    question: "What is 'P-Factor' (asymmetric propeller/rotor thrust) in a Little Bird?",
+    answers: [
+      "Advancing blade produces more thrust than retreating blade in forward flight, creating yaw tendency requiring pedal correction.",
+      "Tail rotor produces more thrust on one side than the other during sideward flight, creating roll tendency.",
+      "Engine produces uneven torque pulses during power changes, creating vibration and yaw oscillations in hover.",
+      "Main rotor creates more downwash on one side during turns, creating altitude loss requiring collective increase."
+    ],
+    correct: 0,
+    explanation: "In forward flight, the advancing rotor blade has higher relative airspeed than the retreating blade, producing asymmetric thrust. This creates a yaw tendency that must be corrected with anti-torque pedal inputs."
+  },
+  {
+    question: "What is the primary cause of 'Settling with Power' in a Little Bird?",
+    answers: [
+      "Descending into own downwash at high rates with low airspeed, causing rotor to operate in recirculating turbulent air.",
+      "Climbing at maximum power with high gross weight, causing engine to reach maximum temperature limits and lose output.",
+      "Hovering too close to obstacles, causing ground effect to suddenly disappear and power requirements to spike instantly.",
+      "Flying at high altitude where thin air reduces lift, causing helicopter to sink despite application of full power."
+    ],
+    correct: 0,
+    explanation: "Settling with power occurs when descending through the helicopter's own downwash at rates typically exceeding 300 fpm with low forward speed. The rotor enters its own turbulent wake, destroying efficiency despite available power."
+  },
+  {
+    question: "What is the effect of a tight autorotative turn in a Little Bird?",
+    answers: [
+      "Increased disk loading from G-forces increases rotor RPM; pilot must raise collective slightly to prevent overspeed.",
+      "Decreased centrifugal force from banking causes rotor RPM to decay rapidly; pilot must lower collective to restore RPM.",
+      "Increased tail rotor efficiency from slipstream effects improves directional control; less pedal input required in turns.",
+      "Decreased engine cooling from reduced forward airspeed causes temperature rise; pilot must reduce power immediately."
+    ],
+    correct: 0,
+    explanation: "Turns increase G-loading on the rotor system. Higher disk loading forces more air up through the rotor, which increases rotor RPM during autorotation. The pilot may need to raise collective to prevent exceeding RPM limits."
+  },
+  {
+    question: "In a Little Bird, what is 'Translating Tendency' and how is it corrected?",
+    answers: [
+      "Tail rotor thrust creates lateral drift (usually right) in hover; corrected by holding left cyclic to maintain position.",
+      "Main rotor torque creates nose-left yaw in hover; corrected by holding right pedal pressure continuously during hover.",
+      "Ground effect creates forward drift during hover taxi; corrected by holding aft cyclic to prevent unwanted movement.",
+      "Gyroscopic precession creates pitch-up during takeoff; corrected by holding forward cyclic during initial climb-out."
+    ],
+    correct: 0,
+    explanation: "The tail rotor's thrust, while primarily producing anti-torque, also has a lateral component that pushes the helicopter sideways (typically right in American helicopters). Pilots must hold cyclic into the drift to maintain position."
+  },
+  {
+    question: "What is the danger of a 'Hung Start' during Little Bird engine startup?",
+    answers: [
+      "Engine fails to accelerate to idle RPM; continued fuel flow without ignition can cause fire or fuel accumulation in hot section.",
+      "Engine accelerates beyond maximum RPM limits; continued operation causes turbine overspeed and catastrophic blade failure.",
+      "Starter motor continues running after engine start; excessive current draw causes electrical system failure and battery damage.",
+      "Engine starts but fails to produce torque; transmission remains disengaged causing sudden engagement and drivetrain shock."
+    ],
+    correct: 0,
+    explanation: "A hung start occurs when the engine lights off but fails to accelerate to idle speed. Continued fuel injection into the hot combustion section without proper airflow can cause fire or dangerous fuel accumulation."
+  },
+  {
+    question: "What is the correct procedure for a Little Bird confined area takeoff?",
+    answers: [
+      "Perform hover power check, depart over lowest obstacle using maximum performance technique, transition to forward flight outside area.",
+      "Immediately transition to forward flight at maximum power, maintain low altitude until clear of all obstacles, then climb.",
+      "Hover taxi to edge of area, reduce power to minimum, perform running takeoff to build speed before initiating climb.",
+      "Climb vertically to 500 feet AGL above obstacles, then transition to forward flight and reduce power for cruise."
+    ],
+    correct: 0,
+    explanation: "Confined area takeoffs require verifying adequate hover power, then using maximum performance technique to depart over the lowest obstacle, maintaining best rate-of-climb speed until clear before transitioning to normal flight."
+  },
+  {
+    question: "What is 'Blade Flapping,' and how does it compensate for dissymmetry of lift?",
+    answers: [
+      "Blades rise on advancing side (reducing angle of attack) and fall on retreating side (increasing angle of attack), equalizing lift.",
+      "Blades rotate faster on advancing side and slower on retreating side, maintaining constant rotational velocity throughout disk.",
+      "Blades twist aerodynamically to reduce pitch on advancing side and increase pitch on retreating side automatically.",
+      "Blades shift forward on advancing side and aft on retreating side, maintaining balanced thrust throughout rotation cycle."
+    ],
+    correct: 0,
+    explanation: "Blade flapping is the up-and-down movement of blades that compensates for lift asymmetry in forward flight. The advancing blade flaps up (reducing its angle of attack and lift), while the retreating blade flaps down (increasing angle of attack and lift)."
+  },
+  {
+    question: "What is the primary structural concern with repeated high-G maneuvers in a Little Bird?",
+    answers: [
+      "Cumulative fatigue damage to rotor mast, blade attachment points, and airframe can eventually cause catastrophic structural failure.",
+      "Excessive wear on hydraulic servo actuators causes gradual loss of control authority until complete system failure occurs.",
+      "Engine mounting bolts loosen progressively, eventually allowing engine to separate from airframe during high-power operations.",
+      "Repeated stress causes fuel bladders to develop leaks, resulting in fuel loss and potential fire hazard in flight."
+    ],
+    correct: 0,
+    explanation: "High-G maneuvers create stress concentrations in critical structural components. While each maneuver may be within limits, cumulative fatigue damage over time can lead to cracks and eventual failure of rotor components or airframe."
   }
 ];
 
@@ -426,6 +746,7 @@ let currentQuestionIndex = 0;
 let score = 0;
 let answered = false;
 
+// Standard shuffle algorithm, nothing fancy
 function shuffleArray(array) {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -436,9 +757,10 @@ function shuffleArray(array) {
 }
 
 function initExam() {
+  // Pick 30 random questions from the pool
   currentQuestions = shuffleArray(QUESTION_POOL).slice(0, 30);
   
-  // Shuffle answers for each question
+  // Shuffle answers for each question so you can't just memorize patterns
   currentQuestions.forEach(q => {
     const correctAnswer = q.answers[q.correct];
     const shuffled = shuffleArray(q.answers.map((ans, idx) => ({ ans, idx })));
@@ -481,78 +803,80 @@ function displayQuestion() {
 }
 
 function checkAnswer(selectedIndex) {
-    if (answered) return;
-
-    answered = true;
-    const question = currentQuestions[currentQuestionIndex];
-    const answerButtons = document.querySelectorAll('.answer-btn');
-    const explanationContainer = document.getElementById('explanation-container');
-
-    answerButtons.forEach(btn => btn.disabled = true);
-
-    if (selectedIndex === question.correct) {
-        score++;
-        answerButtons[selectedIndex].classList.add('correct');
-    } else {
-        answerButtons[selectedIndex].classList.add('incorrect');
-        answerButtons[question.correct].classList.add('correct');
-    }
-
-    explanationContainer.innerHTML = `
+  if (answered) return; // Stop clicking dummy
+  
+  answered = true;
+  const question = currentQuestions[currentQuestionIndex];
+  const answerButtons = document.querySelectorAll('.answer-btn');
+  const explanationContainer = document.getElementById('explanation-container');
+  
+  // Lock em all down
+  answerButtons.forEach(btn => btn.disabled = true);
+  
+  if (selectedIndex === question.correct) {
+    score++;
+    answerButtons[selectedIndex].classList.add('correct');
+  } else {
+    answerButtons[selectedIndex].classList.add('incorrect');
+    answerButtons[question.correct].classList.add('correct');
+  }
+  
+  explanationContainer.innerHTML = `
     <div class="explanation">
       <strong>EXPLANATION:</strong> ${question.explanation}
     </div>
   `;
-
-    document.getElementById('next-btn').classList.remove('hidden');
-    updateProgress();
+  
+  document.getElementById('next-btn').classList.remove('hidden');
+  updateProgress();
 }
 
+// Update the score display - hopefully you're not bombing this
 function updateProgress() {
-    document.getElementById('current-q').textContent = currentQuestionIndex + 1;
-    document.getElementById('score').textContent = score;
-    const percentage = ((score / (currentQuestionIndex + (answered ? 1 : 0))) * 100).toFixed(0);
-    document.getElementById('percentage').textContent = percentage + '%';
+  document.getElementById('current-q').textContent = currentQuestionIndex + 1;
+  document.getElementById('score').textContent = score;
+  const percentage = ((score / (currentQuestionIndex + (answered ? 1 : 0))) * 100).toFixed(0);
+  document.getElementById('percentage').textContent = percentage + '%';
 }
 
 function nextQuestion() {
-    currentQuestionIndex++;
-
-    if (currentQuestionIndex >= currentQuestions.length) {
-        showResults();
-    } else {
-        displayQuestion();
-    }
+  currentQuestionIndex++;
+  
+  if (currentQuestionIndex >= currentQuestions.length) {
+    showResults();
+  } else {
+    displayQuestion();
+  }
 }
 
 function showResults() {
-    const container = document.getElementById('question-container');
-    const resultContainer = document.getElementById('result-container');
-    const formContainer = document.getElementById('form-container');
-
-    container.classList.add('hidden');
-    document.getElementById('exam-progress').classList.add('hidden');
-    resultContainer.classList.remove('hidden');
-
-    const percentage = ((score / 30) * 100).toFixed(1);
-    const passed = score >= 27; // 90% of 30 is 27
-
-    resultContainer.innerHTML = `
+  const container = document.getElementById('question-container');
+  const resultContainer = document.getElementById('result-container');
+  const formContainer = document.getElementById('form-container');
+  
+  container.classList.add('hidden');
+  document.getElementById('exam-progress').classList.add('hidden');
+  resultContainer.classList.remove('hidden');
+  
+  const percentage = ((score / 30) * 100).toFixed(1);
+  const passed = score >= 27;
+  
+  resultContainer.innerHTML = `
     <div class="result-screen ${passed ? 'pass' : 'fail'}">
       <div class="result-status">${passed ? 'PASS' : 'FAIL'}</div>
       <div class="result-score">${score} / 30 (${percentage}%)</div>
       <div class="result-message">
-        ${passed
-            ? 'You have passed the Little Bird written examination. Complete the form below to schedule your in-game practical check ride with an instructor.'
-            : 'You did not achieve the required 90% passing score. Review the material and retake the examination.'}
+        ${passed 
+          ? 'You have passed the Little Bird written examination. Complete the form below to schedule your in-game practical check ride with an instructor.'
+          : 'You did not achieve the required 90% passing score. Review the material and retake the examination.'}
       </div>
       ${!passed ? '<button class="btn" onclick="location.reload()">RETAKE EXAM</button>' : ''}
     </div>
   `;
-
-    if (passed) {
-        formContainer.classList.remove('hidden');
-        formContainer.innerHTML = `
+  
+  if (passed) {
+    formContainer.classList.remove('hidden');
+    formContainer.innerHTML = `
       <div class="form-container">
         <h2>POST-EXAM CERTIFICATION FORM</h2>
         <p>Your written exam results will be forwarded to the instructor cadre. Complete this form to begin the practical scheduling process.</p>
@@ -579,83 +903,78 @@ function showResults() {
         <div id="form-response" class="hidden"></div>
       </div>
     `;
-
-        document.getElementById('cert-form').addEventListener('submit', handleFormSubmit);
-    }
+    
+    document.getElementById('cert-form').addEventListener('submit', handleFormSubmit);
+  }
 }
 
 function handleFormSubmit(e) {
-    e.preventDefault();
-
-    // Paste your Cloudflare Worker URL here:
-    const CLOUDFLARE_WORKER_URL = 'https://arsenapapi.arsenalapi.workers.dev';
-
-    const formResponse = document.getElementById('form-response');
-    formResponse.classList.remove('hidden');
-    formResponse.innerHTML = `
+  e.preventDefault();
+  
+  // Webhook to send results to Discord
+  const CLOUDFLARE_WORKER_URL = 'https://arsenapapi.arsenalapi.workers.dev';
+  
+  const formResponse = document.getElementById('form-response');
+  formResponse.classList.remove('hidden');
+  formResponse.innerHTML = `
     <div class="loading-spinner">
       <div class="spinner"></div>
       <p>TRANSMITTING TO INSTRUCTOR CADRE...</p>
     </div>
   `;
 
-    // Get form values
-    const discordUser = document.getElementById('discord').value;
-    const callsignUser = document.getElementById('callsign').value;
-    const availabilityUser = document.getElementById('availability').value;
+  const discordUser = document.getElementById('discord').value;
+  const callsignUser = document.getElementById('callsign').value;
+  const availabilityUser = document.getElementById('availability').value;
+  
+  const examType = 'Little Bird';
+  const percentage = ((score / 30) * 100).toFixed(1);
 
-    // Automatically detect which exam they completed based on page URL
-    const examType = window.location.pathname.includes('huey') ? 'UH-1H Huey' : 'MH-6 Little Bird';
-    const percentage = ((score / 30) * 100).toFixed(1);
-
-    // Format a tactical Discord embed payload
-    const discordPayload = {
-        username: "Wardogs Flight Command",
-        embeds: [
-            {
-                title: "🚨 NEW PILOT LICENSING APPLICATION 🚨",
-                description: "A candidate has successfully passed the written examination and is ready for a practical evaluation.",
-                color: 16763904, // Tactical Amber/Yellow in decimal
-                fields: [
-                    {
-                        name: "👤 Candidate Details",
-                        value: `**Discord:** ${discordUser}\n**Callsign:** ${callsignUser}`,
-                        inline: false
-                    },
-                    {
-                        name: "🛸 Exam Performance",
-                        value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 30 (${percentage}%)`,
-                        inline: false
-                    },
-                    {
-                        name: "📅 Availability & Timezone",
-                        value: availabilityUser,
-                        inline: false
-                    }
-                ],
-                footer: {
-                    text: "Wardogs Unofficial Flight Academy • Remember the rules: Crash = Fail"
-                },
-                timestamp: new Date().toISOString()
-            }
-        ]
-    };
-
-    // Perform a standard POST request directly to your secure Cloudflare Worker
-    fetch(CLOUDFLARE_WORKER_URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+  const discordPayload = {
+    username: "Wardogs Flight Command",
+    embeds: [
+      {
+        title: "🚨 NEW PILOT LICENSING APPLICATION 🚨",
+        description: "A candidate has successfully passed the written examination and is ready for a practical evaluation.",
+        color: 16763904,
+        fields: [
+          {
+            name: "👤 Candidate Details",
+            value: `**Discord:** ${discordUser}\n**Callsign:** ${callsignUser}`,
+            inline: false
+          },
+          {
+            name: "🛸 Exam Performance",
+            value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 30 (${percentage}%)`,
+            inline: false
+          },
+          {
+            name: "📅 Availability & Timezone",
+            value: availabilityUser,
+            inline: false
+          }
+        ],
+        footer: {
+          text: "Wardogs Unofficial Flight Academy • Remember the rules: Crash = Fail"
         },
-        body: JSON.stringify(discordPayload)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to transmit application to Cloudflare.');
-            }
+        timestamp: new Date().toISOString()
+      }
+    ]
+  };
 
-            // Show success message once the request is complete
-            formResponse.innerHTML = `
+  fetch(CLOUDFLARE_WORKER_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(discordPayload)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to transmit application.');
+    }
+    
+    formResponse.innerHTML = `
       <div class="success-message">
         <h3 style="color: var(--tactical-yellow); margin-bottom: 20px;">✓ TRANSMISSION SUCCESSFUL</h3>
         <p>Your written exam results have been registered. Stand by for contact via Discord to schedule your in-game practical check ride.</p>
@@ -665,18 +984,18 @@ function handleFormSubmit(e) {
         <p style="margin-top: 20px;">Precision and speed are mandatory. Good luck, pilot.</p>
       </div>
     `;
-
-            document.getElementById('cert-form').style.display = 'none';
-        })
-        .catch(error => {
-            console.error('Error submitting application:', error);
-
-            formResponse.innerHTML = `
+    
+    document.getElementById('cert-form').style.display = 'none';
+  })
+  .catch(error => {
+    console.error('Error submitting application:', error);
+    formResponse.innerHTML = `
       <div class="success-message" style="border-color: var(--tactical-red);">
         <h3 style="color: var(--tactical-red); margin-bottom: 20px;">⚠️ TRANSMISSION ERROR</h3>
         <p>There was a connection issue forwarding your application to our database. Please take a screenshot of your passing score (${score}/30) and contact an instructor directly on Discord.</p>
       </div>
     `;
-        });
+  });
 }
+
 initExam();

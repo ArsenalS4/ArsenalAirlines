@@ -218,11 +218,28 @@ main {
 }
 
 /* Table */
+.roster-note {
+  margin-top: 12px;
+  margin-bottom: 18px;
+  color: var(--tactical-yellow);
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+}
+
+/* Table */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .roster-table {
   width: 100%;
   border-collapse: collapse;
   margin: 30px 0;
   background: var(--deep-black);
+  min-width: 420px;
 }
 
 .roster-table thead {
@@ -257,6 +274,161 @@ main {
   font-weight: 700;
   letter-spacing: 1px;
   border-radius: 2px;
+}
+
+/* Pilot link */
+.pilot-link {
+  background: none;
+  border: none;
+  color: var(--tactical-yellow);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0;
+}
+
+.pilot-link:hover {
+  text-decoration: underline;
+}
+
+/* Pilot Modal */
+.pilot-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pilot-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.pilot-modal-content {
+  position: relative;
+  background: var(--gunmetal);
+  border: 2px solid var(--tactical-yellow);
+  max-width: 700px;
+  width: 90%;
+  padding: 30px 30px 26px;
+  z-index: 1501;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+.pilot-modal-title {
+  font-size: 1.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--tactical-yellow);
+  margin-bottom: 4px;
+}
+
+.pilot-modal-callsign {
+  font-size: 1rem;
+  color: var(--steel-grey);
+  margin-bottom: 20px;
+}
+
+.pilot-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--crisp-white);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.pilot-modal-body {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pilot-survival {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  flex: 0 0 auto;
+}
+
+.survival-chart {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.survival-bg,
+.survival-fg {
+  fill: none;
+  stroke-width: 10;
+}
+
+.survival-bg {
+  stroke: var(--hover-grey);
+}
+
+.survival-fg {
+  stroke: var(--tactical-yellow);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease-out;
+}
+
+.survival-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.survival-percent {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--tactical-yellow);
+}
+
+.survival-caption {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--steel-grey);
+  margin-top: 4px;
+}
+
+.pilot-stats-box {
+  flex: 1 1 220px;
+  background: var(--deep-black);
+  border: 2px solid var(--steel-grey);
+  padding: 20px 22px;
+}
+
+.pilot-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.pilot-stat-label {
+  font-size: 0.95rem;
+  color: var(--steel-grey);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pilot-stat-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--crisp-white);
 }
 
 /* Footer */
@@ -534,34 +706,181 @@ footer {
 }
 
 @media (max-width: 768px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  .nav-container {
+    padding: 0 12px;
+  }
+
+  .nav-logo {
+    height: 44px;
+    padding: 6px 0;
+  }
+
   .nav-links {
     flex-direction: column;
     gap: 0;
   }
   
   .nav-links a {
+    padding: 12px 16px;
     border-left: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
   }
   
+  .hero {
+    height: 45vh;
+  }
+
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
-  
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  main {
+    padding: 30px 12px;
+  }
+
+  .content-section {
+    padding: 24px 18px;
+  }
+
+  .content-section h2 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+  }
+
+  .content-section p {
+    font-size: 0.95rem;
+  }
+
+  .exam-container {
+    padding: 0 4px;
+  }
+
+  .exam-header {
+    padding: 18px 12px;
+  }
+
+  .exam-header h1 {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+  }
+
+  .exam-progress {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .question-card {
+    padding: 20px 16px;
+  }
+
+  .question-text {
+    font-size: 1.05rem;
+  }
+
+  .answer-btn {
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+
   .btn-container {
     flex-direction: column;
   }
   
   .btn {
     width: 100%;
+    padding: 14px 24px;
+    font-size: 1rem;
   }
   
   .roster-table {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
   
   .roster-table th,
   .roster-table td {
-    padding: 10px;
+    padding: 8px;
+  }
+
+  .result-screen {
+    padding: 32px 18px;
+  }
+
+  .pilot-modal-content {
+    width: 94%;
+    padding: 22px 18px 18px;
+  }
+
+  .pilot-modal-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pilot-survival {
+    width: 180px;
+    height: 180px;
+  }
+
+  .pilot-stats-box {
+    width: 100%;
+  }
+
+  .result-status {
+    font-size: 3rem;
+  }
+
+  .result-score {
+    font-size: 2rem;
+  }
+
+  .form-container {
+    padding: 24px 18px;
+  }
+}
+
+@media (min-width: 1400px) {
+  main {
+    max-width: 1600px;
+  }
+
+  .hero {
+    height: 70vh;
+  }
+
+  .hero h1 {
+    font-size: 4.5rem;
+  }
+
+  .hero p {
+    font-size: 1.4rem;
+  }
+
+  .content-section {
+    padding: 48px 56px;
+  }
+
+  .question-card {
+    padding: 40px 36px;
+  }
+
+  .question-text {
+    font-size: 1.4rem;
+  }
+
+  .answer-btn {
+    font-size: 1.1rem;
+  }
+
+  .exam-container {
+    max-width: 1000px;
   }
 }
