@@ -611,19 +611,18 @@ function handleFormSubmit(e) {
         ]
     };
 
-    // Perform a "simple" direct fetch to bypass preflight and CORS entirely
+    // Create a FormData object (This acts as a "simple request" and bypasses CORS preflight)
+    const formData = new FormData();
+    // Discord explicitly parses the 'payload_json' field inside form-data as JSON!
+    formData.append('payload_json', JSON.stringify(discordPayload));
+
+    // Perform the direct, proxy-free fetch
     fetch(REAL_DISCORD_URL, {
         method: 'POST',
-        mode: 'no-cors', // Tells the browser we don't need to read the response body
-        headers: {
-            'Content-Type': 'text/plain' // Downgrades to a "simple request" to skip the preflight check
-        },
-        body: JSON.stringify(discordPayload)
+        mode: 'no-cors', // Skip CORS browser response checks
+        body: formData   // Automatically sets Content-Type to multipart/form-data; boundary=...
     })
         .then(() => {
-            // Because of 'no-cors', the browser won't let us read the status code,
-            // but the request was successfully sent and executed by Discord's server.
-
             // Show success message
             formResponse.innerHTML = `
       <div class="success-message">
