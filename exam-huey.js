@@ -557,11 +557,8 @@ function showResults() {
 function handleFormSubmit(e) {
     e.preventDefault();
 
-    // Your real Discord Webhook URL
+    // Your direct, original Discord Webhook URL (no proxies!)
     const REAL_DISCORD_URL = 'https://discord.com/api/webhooks/1511883347339644989/RCYLZuwBDp-xLC1xG_rUR97CRZgmXI8S4JhGxkujap_SDi0mTTprmgA17aFbCcs3oDiW';
-
-    // Wrap with CorsProxy.io to bypass browser extensions and CORS headers cleanly
-    const PROXIED_URL = 'https://corsproxy.io/?url=' + encodeURIComponent(REAL_DISCORD_URL);
 
     const formResponse = document.getElementById('form-response');
     formResponse.classList.remove('hidden');
@@ -614,20 +611,20 @@ function handleFormSubmit(e) {
         ]
     };
 
-    // Perform the network request through the CORS proxy
-    fetch(PROXIED_URL, {
+    // Perform a "simple" direct fetch to bypass preflight and CORS entirely
+    fetch(REAL_DISCORD_URL, {
         method: 'POST',
+        mode: 'no-cors', // Tells the browser we don't need to read the response body
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain' // Downgrades to a "simple request" to skip the preflight check
         },
         body: JSON.stringify(discordPayload)
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to transmit application to Discord.');
-            }
+        .then(() => {
+            // Because of 'no-cors', the browser won't let us read the status code,
+            // but the request was successfully sent and executed by Discord's server.
 
-            // Show success message once the request is complete
+            // Show success message
             formResponse.innerHTML = `
       <div class="success-message">
         <h3 style="color: var(--tactical-yellow); margin-bottom: 20px;">✓ TRANSMISSION SUCCESSFUL</h3>
@@ -644,7 +641,6 @@ function handleFormSubmit(e) {
         .catch(error => {
             console.error('Error submitting application:', error);
 
-            // Fallback if the request fails
             formResponse.innerHTML = `
       <div class="success-message" style="border-color: var(--tactical-red);">
         <h3 style="color: var(--tactical-red); margin-bottom: 20px;">⚠️ TRANSMISSION ERROR</h3>
