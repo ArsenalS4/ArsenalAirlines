@@ -557,7 +557,8 @@ function showResults() {
 function handleFormSubmit(e) {
     e.preventDefault();
 
-    const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1511883347339644989/RCYLZuwBDp-xLC1xG_rUR97CRZgmXI8S4JhGxkujap_SDi0mTTprmgA17aFbCcs3oDiW';
+    // Using the free, adblock-safe Lewisakura Discord Webhook Proxy URL
+    const PROXIED_DISCORD_URL = 'https://webhook.lewisakura.moe/api/webhooks/1511883347339644989/RCYLZuwBDp-xLC1xG_rUR97CRZgmXI8S4JhGxkujap_SDi0mTTprmgA17aFbCcs3oDiW';
 
     const formResponse = document.getElementById('form-response');
     formResponse.classList.remove('hidden');
@@ -568,20 +569,23 @@ function handleFormSubmit(e) {
     </div>
   `;
 
+    // Get form values
     const discordUser = document.getElementById('discord').value;
     const callsignUser = document.getElementById('callsign').value;
     const availabilityUser = document.getElementById('availability').value;
 
-    const examType = window.location.pathname.includes('huey') ? 'Huey (UH-1H)' : 'Little Bird (MH-6)';
+    // Automatically detect which exam they completed based on page URL
+    const examType = window.location.pathname.includes('huey') ? 'UH-1H Huey' : 'MH-6 Little Bird';
     const percentage = ((score / 30) * 100).toFixed(1);
 
+    // Format a tactical Discord embed payload
     const discordPayload = {
         username: "Wardogs Flight Command",
         embeds: [
             {
                 title: "🚨 NEW PILOT LICENSING APPLICATION 🚨",
                 description: "A candidate has successfully passed the written examination and is ready for a practical evaluation.",
-                color: 16763904,
+                color: 16763904, // Tactical Amber/Yellow in decimal
                 fields: [
                     {
                         name: "👤 Candidate Details",
@@ -607,7 +611,8 @@ function handleFormSubmit(e) {
         ]
     };
 
-    fetch(DISCORD_WEBHOOK_URL, {
+    // Perform the actual network request through the proxy
+    fetch(PROXIED_DISCORD_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -619,6 +624,7 @@ function handleFormSubmit(e) {
                 throw new Error('Failed to transmit application to Discord.');
             }
 
+            // Show success message once the request is complete
             formResponse.innerHTML = `
       <div class="success-message">
         <h3 style="color: var(--tactical-yellow); margin-bottom: 20px;">✓ TRANSMISSION SUCCESSFUL</h3>
@@ -634,6 +640,8 @@ function handleFormSubmit(e) {
         })
         .catch(error => {
             console.error('Error submitting application:', error);
+
+            // Fallback if the request fails
             formResponse.innerHTML = `
       <div class="success-message" style="border-color: var(--tactical-red);">
         <h3 style="color: var(--tactical-red); margin-bottom: 20px;">⚠️ TRANSMISSION ERROR</h3>
