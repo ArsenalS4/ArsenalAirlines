@@ -557,8 +557,11 @@ function showResults() {
 function handleFormSubmit(e) {
     e.preventDefault();
 
-    // Using the free, adblock-safe Lewisakura Discord Webhook Proxy URL
-    const PROXIED_DISCORD_URL = 'https://webhook.lewisakura.moe/api/webhooks/1511883347339644989/RCYLZuwBDp-xLC1xG_rUR97CRZgmXI8S4JhGxkujap_SDi0mTTprmgA17aFbCcs3oDiW';
+    // Your real Discord Webhook URL
+    const REAL_DISCORD_URL = 'https://discord.com/api/webhooks/1511883347339644989/RCYLZuwBDp-xLC1xG_rUR97CRZgmXI8S4JhGxkujap_SDi0mTTprmgA17aFbCcs3oDiW';
+
+    // Wrap with CorsProxy.io to bypass browser extensions and CORS headers cleanly
+    const PROXIED_URL = 'https://corsproxy.io/?url=' + encodeURIComponent(REAL_DISCORD_URL);
 
     const formResponse = document.getElementById('form-response');
     formResponse.classList.remove('hidden');
@@ -611,8 +614,8 @@ function handleFormSubmit(e) {
         ]
     };
 
-    // Perform the actual network request through the proxy
-    fetch(PROXIED_DISCORD_URL, {
+    // Perform the network request through the CORS proxy
+    fetch(PROXIED_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
