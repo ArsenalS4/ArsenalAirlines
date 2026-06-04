@@ -557,8 +557,8 @@ function showResults() {
 function handleFormSubmit(e) {
     e.preventDefault();
 
-    // Your direct, original Discord Webhook URL (no proxies!)
-    const REAL_DISCORD_URL = 'https://discord.com/api/webhooks/1511883347339644989/RCYLZuwBDp-xLC1xG_rUR97CRZgmXI8S4JhGxkujap_SDi0mTTprmgA17aFbCcs3oDiW';
+    // Paste your Cloudflare Worker URL here:
+    const CLOUDFLARE_WORKER_URL = 'https://wardogswebhook.caelebwoodrow.workers.dev';
 
     const formResponse = document.getElementById('form-response');
     formResponse.classList.remove('hidden');
@@ -611,19 +611,20 @@ function handleFormSubmit(e) {
         ]
     };
 
-    // Create a FormData object (This acts as a "simple request" and bypasses CORS preflight)
-    const formData = new FormData();
-    // Discord explicitly parses the 'payload_json' field inside form-data as JSON!
-    formData.append('payload_json', JSON.stringify(discordPayload));
-
-    // Perform the direct, proxy-free fetch
-    fetch(REAL_DISCORD_URL, {
+    // Perform a standard POST request directly to your secure Cloudflare Worker
+    fetch(CLOUDFLARE_WORKER_URL, {
         method: 'POST',
-        mode: 'no-cors', // Skip CORS browser response checks
-        body: formData   // Automatically sets Content-Type to multipart/form-data; boundary=...
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(discordPayload)
     })
-        .then(() => {
-            // Show success message
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to transmit application to Cloudflare.');
+            }
+
+            // Show success message once the request is complete
             formResponse.innerHTML = `
       <div class="success-message">
         <h3 style="color: var(--tactical-yellow); margin-bottom: 20px;">✓ TRANSMISSION SUCCESSFUL</h3>
