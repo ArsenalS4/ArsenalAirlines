@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WARDOGS Driver Roster - Vehicle Licensing Portal</title>
+  <meta name="description" content="Unofficial WARDOGS driver roster and driver stats - Master Driver license holders and certification details.">
+  <link rel="canonical" href="https://wardogspilots.com/drivers.html">
+  <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+  <div class="disclaimer">
+    ⚠️ UNOFFICIAL WARDOGS PILOT LICENSING PORTAL - FAN CREATED ⚠️
+  </div>
+
+  <nav>
+    <div class="nav-container">
+      <img src="/WD_Fullmark_Full.png" alt="WARDOGS Logo" class="nav-logo">
+      <ul class="nav-links">
+        <li><a href="index.html">PILOTS</a></li>
+        <li><a href="requirements.html">PILOT REQUIREMENTS</a></li>
+        <li><a href="exam-littlebird.html">LITTLE BIRD</a></li>
+        <li><a href="exam-huey.html">HUEY</a></li>
+        <li><a href="drivers.html" class="active">DRIVERS</a></li>
+        <li><a href="driver-requirements.html">DRIVER REQUIREMENTS</a></li>
+        <li class="nav-dropdown">
+          <a href="#" aria-haspopup="true" aria-expanded="false">DRIVER EXAMS ▾</a>
+          <ul class="nav-dropdown-list">
+            <li><a href="driver-exam-track1.html">Track 1 — Small Transport</a></li>
+            <li><a href="driver-exam-track2.html">Track 2 — Heavy Transport</a></li>
+            <li><a href="driver-exam-track3.html">Track 3 — Weaponized</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero" role="banner">
+    <img src="/WD_Screenshot_Littlebird_2.jpg" alt="Driver roster hero" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>DRIVERS</h1>
+      <p>AUTHORIZED GROUND VEHICLE OPERATORS</p>
+    </div>
+  </section>
+
+  <main role="main">
+    <section class="content-section" itemscope itemtype="https://schema.org/Table">
+      <h2>THE DRIVER ROSTER</h2>
+      <p>All approved drivers authorized for vehicle operations. Licenses issued after successful completion of written examinations and practical evaluations.</p>
+      <p class="roster-note">Tip: Click a callsign in the roster to view that driver's detailed stats.</p>
+
+      <div class="roster-search-container">
+        <input type="text" id="driver-search" placeholder="Search by callsign, license, or instructor..." class="roster-search-input">
+      </div>
+
+      <div class="table-wrapper">
+        <table class="roster-table">
+          <thead>
+            <tr>
+              <th>CALLSIGN</th>
+              <th>LICENSE CLASS</th>
+              <th>INSTRUCTOR</th>
+              <th>ISSUE DATE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <button class="pilot-link driver-link" data-driver="REDANDFOXY">REDANDFOXY</button>
+              </td>
+              <td><span class="license-badge">TRIPLE LICENSED (SMALL, HEAVY, WEAPONIZED)</span></td>
+              <td>ADMIN</td>
+              <td>June 4th, 2026</td>
+            </tr>
+            <tr>
+              <td>
+                <button class="pilot-link driver-link" data-driver="NINTYDEMONS">NINTYDEMONS</button>
+              </td>
+              <td><span class="license-badge">TRIPLE LICENSED (SMALL, HEAVY, WEAPONIZED)</span></td>
+              <td>ADMIN</td>
+              <td>June 5th, 2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>MISSION BRIEFING</h2>
+      <p>Ground vehicle operators provide tactical mobility, logistics, and fire-support transport across contested environments. Drivers must prioritize convoy discipline, threat awareness, vehicle survivability (armor and spacing), and rapid casualty extraction.</p>
+      <p>Maintain radio discipline, follow commander waypoints, and execute immediate evasive maneuvers on contact. Rules of engagement: keep vehicle moving when under fire unless ordered to dismount; protect dismount zones and prioritize passenger safety.</p>
+    </section>
+  </main>
+
+  <!-- Driver Stats Modal -->
+  <div id="driver-modal" class="pilot-modal hidden" aria-hidden="true">
+    <div class="pilot-modal-backdrop"></div>
+    <div class="pilot-modal-content" role="dialog" aria-modal="true" aria-labelledby="driver-name">
+      <button class="pilot-modal-close" id="driver-modal-close" aria-label="Close driver stats">✕</button>
+      <h2 id="driver-name" class="pilot-modal-title">DRIVER STATS</h2>
+      <p class="pilot-modal-callsign">Callsign: <span id="driver-callsign">REDANDFOXY</span></p>
+
+      <div class="pilot-modal-body">
+        <div class="pilot-survival">
+          <svg class="survival-chart" viewBox="0 0 120 120">
+            <circle class="survival-bg" cx="60" cy="60" r="50" />
+            <circle class="survival-fg" cx="60" cy="60" r="50" />
+          </svg>
+          <div class="survival-label">
+            <div class="survival-percent" id="driver-survival-percent">99%</div>
+            <div class="survival-caption">SURVIVAL RATE</div>
+          </div>
+        </div>
+
+        <div class="pilot-stats-box">
+          <div class="pilot-stat-row">
+            <span class="pilot-stat-label">Successful Trips</span>
+            <span class="pilot-stat-value" id="driver-successful">178</span>
+          </div>
+          <div class="pilot-stat-row">
+            <span class="pilot-stat-label">Casualties (Team Kills)</span>
+            <span class="pilot-stat-value" id="driver-casualties">3</span>
+          </div>
+          <div class="pilot-stat-row">
+            <span class="pilot-stat-label">Avg Trips per Life</span>
+            <span class="pilot-stat-value" id="driver-average">16</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-disclaimer">
+      ⚠️ UNOFFICIAL WARDOGS PILOT LICENSING PORTAL - FAN CREATED ⚠️
+    </div>
+    <div class="footer-info">
+      WARDOGS is a trademark of BULKHEAD. This portal is an unofficial fan project and is not affiliated with or endorsed by BULKHEAD.
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const driverData = {
+        REDANDFOXY: {
+          callsign: 'REDANDFOXY',
+          survivalRate: 99,
+          successfulTrips: 178,
+          casualties: 3,
+          averageTripsPerLife: 16
+        },
+        NINTYDEMONS: {
+          callsign: 'NINTYDEMONS',
+          survivalRate: 97,
+          successfulTrips: 102,
+          casualties: 1,
+          averageTripsPerLife: 4
+        }
+      };
+
+      const modal = document.getElementById('driver-modal');
+      const closeBtn = document.getElementById('driver-modal-close');
+      const callsignEl = document.getElementById('driver-callsign');
+      const percentEl = document.getElementById('driver-survival-percent');
+      const successEl = document.getElementById('driver-successful');
+      const casualtiesEl = document.getElementById('driver-casualties');
+      const averageEl = document.getElementById('driver-average');
+      const survivalCircle = modal.querySelector('.survival-fg');
+
+      const RADIUS = 50;
+      const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
+      if (survivalCircle) {
+        // use gold color specifically for driver ring
+        survivalCircle.style.stroke = getComputedStyle(document.documentElement).getPropertyValue('--tactical-yellow') || '#f4c430';
+        survivalCircle.style.strokeDasharray = CIRCUMFERENCE;
+        survivalCircle.style.strokeDashoffset = CIRCUMFERENCE;
+      }
+
+      function setSurvival(rate) {
+        const offset = CIRCUMFERENCE - (rate / 100) * CIRCUMFERENCE;
+        if (survivalCircle) survivalCircle.style.strokeDashoffset = offset;
+        percentEl.textContent = rate.toFixed(0) + '%';
+      }
+
+      function openDriverStats(id) {
+        const data = driverData[id];
+        if (!data) return;
+
+        callsignEl.textContent = data.callsign;
+        successEl.textContent = data.successfulTrips;
+        casualtiesEl.textContent = data.casualties;
+        averageEl.textContent = data.averageTripsPerLife;
+        setSurvival(data.survivalRate);
+
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeDriverStats() {
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('.driver-link');
+        if (link) {
+          const id = link.getAttribute('data-driver');
+          openDriverStats(id);
+        }
+
+        if (e.target.classList.contains('pilot-modal-backdrop')) {
+          closeDriverStats();
+        }
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeDriverStats);
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeDriverStats();
+        }
+      });
+
+      // Roster search functionality (same behavior as pilot roster)
+      const searchInput = document.getElementById('driver-search');
+      const rosterRows = document.querySelectorAll('.roster-table tbody tr');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const searchTerm = e.target.value.toLowerCase().trim();
+
+          rosterRows.forEach(row => {
+            const callsign = row.cells[0].textContent.toLowerCase();
+            const license = row.cells[1].textContent.toLowerCase();
+            const instructor = row.cells[2].textContent.toLowerCase();
+            const date = row.cells[3].textContent.toLowerCase();
+
+            const matches = callsign.includes(searchTerm) ||
+                           license.includes(searchTerm) ||
+                           instructor.includes(searchTerm) ||
+                           date.includes(searchTerm);
+
+            row.style.display = matches ? '' : 'none';
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

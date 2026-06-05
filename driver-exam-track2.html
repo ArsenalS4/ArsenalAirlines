@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Driver Exam — Track 2: Heavy Transport | WARDOGS</title>
+  <meta name="description" content="Wardogs Heavy Transport Driver Examination — written test for Track 2 (Heavy Transport). 30 questions, 90% pass required.">
+  <link rel="canonical" href="https://wardogspilots.com/driver-exam-track2.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Driver Exam — Track 2: Heavy Transport" />
+  <meta property="og:description" content="Wardogs Heavy Transport Driver Examination — heavy transport written test." />
+  <meta property="og:image" content="/WD_Screenshot_Littlebird_2.jpg" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <div class="disclaimer">
+    ⚠️ UNOFFICIAL WARDOGS PILOT LICENSING PORTAL - FAN CREATED ⚠️
+  </div>
+
+  <nav>
+    <div class="nav-container">
+      <img src="/WD_Fullmark_Full.png" alt="WARDOGS Logo" class="nav-logo">
+      <ul class="nav-links">
+        <li><a href="index.html">PILOTS</a></li>
+        <li><a href="requirements.html">PILOT REQUIREMENTS</a></li>
+        <li><a href="exam-littlebird.html">LITTLE BIRD</a></li>
+        <li><a href="exam-huey.html">HUEY</a></li>
+        <li><a href="drivers.html">DRIVERS</a></li>
+        <li><a href="driver-requirements.html">DRIVER REQUIREMENTS</a></li>
+        <li class="nav-dropdown">
+          <a href="#" aria-haspopup="true" aria-expanded="false">DRIVER EXAMS ▾</a>
+          <ul class="nav-dropdown-list">
+            <li><a href="driver-exam-track1.html">Track 1 — Small Transport</a></li>
+            <li><a href="driver-exam-track2.html" class="active">Track 2 — Heavy Transport</a></li>
+            <li><a href="driver-exam-track3.html">Track 3 — Weaponized</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero" role="banner">
+    <img src="/WD_Screenshot_Littlebird_2.jpg" alt="Driver exam hero image" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>DRIVER EXAM — TRACK 2</h1>
+      <p>HEAVY TRANSPORT / LOGISTICS OPERATIONS</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="exam-container">
+      <div class="exam-header">
+        <h1>HEAVY TRANSPORT EXAM</h1>
+        <p>HEAVY TRANSPORT DRIVER TEST</p>
+      </div>
+
+      <div id="exam-progress" class="exam-progress">
+        <div class="progress-item">
+          <div class="progress-label">Question</div>
+          <div class="progress-value"><span id="current-q">1</span>/30</div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label">Correct</div>
+          <div class="progress-value" id="score">0</div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label">Progress</div>
+          <div class="progress-value" id="percentage">0%</div>
+        </div>
+      </div>
+
+      <div id="question-container"></div>
+      <div id="result-container" class="hidden"></div>
+      <div id="form-container" class="hidden"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-disclaimer">
+      ⚠️ UNOFFICIAL WARDOGS PILOT LICENSING PORTAL - FAN CREATED ⚠️
+    </div>
+    <div class="footer-info">
+      WARDOGS is a trademark of BULKHEAD. This portal is an unofficial fan project and is not affiliated with or endorsed by BULKHEAD.
+    </div>
+  </footer>
+
+  <script>
+  // ===================================================
+  // Wardogs Heavy Transport Driver Examination
+  // ===================================================
+
+  const QUESTION_POOL = [
+    {
+      question: "When descending a steep, gravel-covered grade with a fully loaded heavy transport truck, what is the safest method to manage your speed?",
+      answers: [
+        "Shift into a low gear, utilize engine retarders or exhaust brakes, and apply steady, light brake pressure.",
+        "Shift into neutral, turn off the engine, and pump the hydraulic foot brake rapidly to keep it cool.",
+        "Maintain the highest possible gear, drag the trailer brakes heavily, and steer in a wide zig-zag pattern.",
+        "Accelerate moderately to outrun the shifting cargo weight before the suspension reaches its maximum limit."
+      ],
+      correct: 0,
+      explanation: "Using engine retarders and a low gear (engine braking) on steep grades controls your descent speed without generating extreme heat in your service brakes. This prevents brake fade and ensures you have stopping power at the bottom."
+    },
+    {
+      question: "What primary factor causes a semi-articulated heavy transport vehicle to jackknife, and how can the driver prevent it?",
+      answers: [
+        "Loss of traction on the tractor's rear wheels during heavy braking; prevent it by using smooth, progressive braking.",
+        "Excessively low cargo weight in the trailer bed; prevent it by keeping the cargo concentrated near the rear bumper.",
+        "Over-inflated steering tires on the front axle; prevent it by airing down all tires on dry pavement surfaces.",
+        "Heavy acceleration while negotiating a sharp uphill curve; prevent it by downshifting to maximize engine torque."
+      ],
+      correct: 0,
+      explanation: "A jackknife occurs when the drive wheels of the tractor lock up and lose traction under heavy braking, causing the trailer's forward momentum to push the tractor sideways. Smooth, progressive braking and proper trailer brake adjustments prevent this."
+    },
+    {
+      question: "How does hauling a liquid payload in an un-baffled tank transport vehicle affect handling during sharp turns?",
+      answers: [
+        "The liquid sloshes sideways, creating a powerful surge of kinetic energy that can easily cause a rollover.",
+        "The liquid weight shifts entirely to the front axle, heavily increasing steer-tire traction and stability.",
+        "The shifting fluid creates an aerodynamic vacuum inside the tank, severely reducing the vehicle's top speed.",
+        "The movement of the cargo causes the engine to stall by blocking fuel delivery lines under heavy loads."
+      ],
+      correct: 0,
+      explanation: "Un-baffled tanks allow liquids to slosh freely. When taking a turn, the liquid shifts to the outside of the turn, bringing a massive wave of kinetic energy with it. This sudden lateral weight transfer easily overloads the suspension, causing a rollover."
+    },
+    {
+      question: "When negotiating a tight right-hand turn at an intersection with a long-bed heavy transport vehicle, you must:",
+      answers: [
+        "Swing wide to the left before turning to compensate for the trailer wheels tracking inside the tractor's path.",
+        "Stay as close to the right curb as possible to prevent smaller vehicles from attempting to pass on your side.",
+        "Maintain maximum speed through the turn to prevent the drive tires from slipping on the road surface.",
+        "Turn the steering wheel rapidly to lock-to-lock positions to force the trailer axles to steer outward."
+      ],
+      correct: 0,
+      explanation: "Because trailer wheels 'off-track' (cut corners) and follow a tighter path than the tractor's front wheels, you must swing the front of the vehicle wide to the left before turning right to prevent the trailer wheels from hitting curbs, signs, or obstacles."
+    },
+    {
+      question: "When climbing a steep off-road gradient with a fully loaded heavy transport vehicle, the driver should:",
+      answers: [
+        "Select a low gear before initiating the climb, and maintain a steady engine RPM to prevent stalling.",
+        "Charge the hill in high gear, and downshift quickly only after the engine RPM drops near zero.",
+        "Engage the differential locks only after the vehicle loses all forward momentum and begins sliding.",
+        "Accelerate and decelerate rapidly to pump oil through the transmission cooling lines during the climb."
+      ],
+      correct: 0,
+      explanation: "Attempting to change gears halfway up a steep hill under a heavy load can cause you to get stuck in neutral, resulting in a complete loss of traction and control. Selecting the proper low gear before starting the climb ensures constant torque to the wheels."
+    },
+    {
+      question: "How does doubling the total weight of a heavy transport vehicle's cargo affect its emergency braking distance?",
+      answers: [
+        "It increases the total stopping distance significantly because of the massive increase in kinetic energy.",
+        "It decreases the total stopping distance because the extra weight pushes the tires harder into the road.",
+        "It has no measurable effect on stopping distance as long as the air brake pressure remains at maximum.",
+        "It only increases stopping distance when driving on wet surfaces, not on dry asphalt or dirt trails."
+      ],
+      correct: 0,
+      explanation: "The kinetic energy of a moving vehicle increases proportionally with its weight. Doubling your vehicle's weight means the brakes have to convert twice as much kinetic energy into heat, greatly extending your stopping distance."
+    },
+    {
+      question: "When carrying a tall, heavy payload (like an armored utility shelter) on a heavy flatbed truck:",
+      answers: [
+        "The vehicle's center of gravity is raised, making it highly susceptible to rolling over on uneven terrain.",
+        "The vehicle's aerodynamic stability is greatly improved, allowing for faster safe cornering speeds.",
+        "The risk of understeer is completely eliminated because the load pushes the rear drive tires down.",
+        "The driver must lower all tire pressures to zero to prevent the cargo from bouncing off the bed."
+      ],
+      correct: 0,
+      explanation: "A tall, heavy load raises the vehicle's center of gravity. On off-road trails or uneven slopes, a high center of gravity causes the vehicle's weight to shift quickly to the downhill side, dramatically increasing the risk of an immediate rollover."
+    },
+    {
+      question: "What is the primary operational hazard of crossing a sharp, narrow ridge or berm with a long-wheelbase heavy transport?",
+      answers: [
+        "High-centering the vehicle, where the middle of the frame gets stuck on the peak, lifting the drive wheels.",
+        "Catastrophic engine overheating due to a lack of clean airflow under the front bumper assembly.",
+        "Sudden loss of power steering fluid pressure as the steering pump angles past its mechanical limit.",
+        "The cargo shifting entirely to the rear axles, causing the front steering tires to lift off the ground."
+      ],
+      correct: 0,
+      explanation: "A long wheelbase means a large gap between axles. When crossing a sharp ridge, the center of the chassis can bottom out on the peak (high-centering), leaving the front and rear wheels lifted off the ground with no traction."
+    },
+    {
+      question: "What is 'air brake lag' in a heavy transport vehicle, and how must a professional driver compensate for it?",
+      answers: [
+        "The brief delay between pressing the pedal and the air pressure reaching the brakes; compensate by braking early.",
+        "The delay in the engine building up manifold vacuum pressure; compensate by revving the engine in neutral.",
+        "The time it takes for the brake pads to cool down after a hard stop; compensate by driving at high speed.",
+        "The slow release of the emergency spring brake chamber; compensate by pulling the yellow dashboard valve."
+      ],
+      correct: 0,
+      explanation: "Unlike hydraulic brakes which transmit pressure instantly, air brakes must pump air through long lines to the brake chambers. This creates a delay of about 0.5 to 1 second (air brake lag). You must compensate by starting your braking maneuvers earlier."
+    },
+    {
+      question: "Why is it highly dangerous to attempt to downshift a heavy transport manual transmission while descending a steep grade?",
+      answers: [
+        "You may get stuck in neutral and be unable to re-engage any gear, losing all engine braking control.",
+        "The engine cooling fan will disengage automatically, leading to a sudden and severe radiator blowout.",
+        "The differential gears will lock up permanently, causing the truck to slide sideways down the slope.",
+        "The air brake lines will lose pressure rapidly as the compressor output drops with engine RPM."
+      ],
+      correct: 0,
+      explanation: "If you shift into neutral while descending a steep slope, the weight of the truck will accelerate it rapidly. The transmission gears and engine RPM will lose synchronization, making it physically impossible to shift back into gear, leaving you with runaway speed."
+    },
+    {
+      question: "When securing a heavy tracked vehicle (like an APC or bulldozer) to a flatbed trailer, you must use:",
+      answers: [
+        "High-strength steel chains and binders, securing the cargo at a minimum of four distinct tie-down points.",
+        "Heavy-duty nylon ratchet straps wrapped around the middle of the vehicle's armor plating sections.",
+        "Standard steel wire ropes looped through the front bumper towing eyes and secured with clamps.",
+        "Thick hemp ropes tied with military-grade knots around the drive sprockets and support rollers."
+      ],
+      correct: 0,
+      explanation: "Tracked armor is extremely heavy. To prevent it from shifting or sliding off during heavy braking or cornering, you must secure it with heavy-duty steel transport chains and binders, utilizing at least four separate tie-down points."
+    },
+    {
+      question: "What is the purpose of a runaway truck ramp on steep mountain passes, and when should you use it?",
+      answers: [
+        "To stop a heavy vehicle that has suffered complete brake failure; use it immediately if speed is uncontrollable.",
+        "To allow slower heavy transport vehicles to pull over and let passenger traffic pass safely by.",
+        "To park the vehicle safely during severe weather conditions to prevent the tires from freezing.",
+        "To test the efficiency of the vehicle's hydraulic brake cylinders under extreme load conditions."
+      ],
+      correct: 0,
+      explanation: "Runaway ramps use deep gravel or uphill slopes to safely stop heavy vehicles that have lost their brakes on a descent. If your speed becomes uncontrollable due to brake fade, you must steer onto the ramp immediately."
+    },
+    {
+      question: "If one of your rear dual tires blows out while driving a heavy transport truck on a highway:",
+      answers: [
+        "Maintain steering control, ease off the accelerator, avoid slamming on brakes, and pull over safely.",
+        "Immediately apply full emergency brakes and turn the steering wheel sharply toward the shoulder.",
+        "Shift into the lowest gear possible and pump the accelerator rapidly to maintain forward momentum.",
+        "Turn off the engine immediately and pull the yellow parking brake valve while still in motion."
+      ],
+      correct: 0,
+      explanation: "A blowout causes a sudden pull, but dual tires mean you have a backup tire on that side. Maintain steering control, stay off the brakes (which can cause a slide), ease off the throttle, and pull over slowly once the truck stabilizes."
+    },
+    {
+      question: "If the transmission oil temperature gauge spikes into the caution zone while hauling a heavy payload uphill:",
+      answers: [
+        "Reduce your speed, select a lower gear to increase engine RPM (maximizing cooling), and pull over if needed.",
+        "Accelerate to maximum speed to force more cold air through the transmission oil cooler lines.",
+        "Shift into neutral immediately and coast down the hill backward to let the wind cool the system.",
+        "Turn off the transmission fluid pump manually using the accessory switches on the dashboard."
+      ],
+      correct: 0,
+      explanation: "Spiking transmission temps indicate the torque converter is slipping under heavy load. Downshifting to a lower gear decreases the load on the gears and spins the engine cooling fan and pumps faster, helping cool the transmission."
+    },
+    {
+      question: "Before driving a heavy transport vehicle under a low-clearance bridge or overpass, you must:",
+      answers: [
+        "Know your vehicle's exact height and compare it to the posted bridge clearance sign before proceeding.",
+        "Maintain maximum speed to use the aerodynamic downforce of the truck to lower its total height.",
+        "Deflate all tires on the drive axles to half pressure right before driving under the structure.",
+        "Instruct your co-driver to stand on the roof of the cab to verify the clearing distance visually."
+      ],
+      correct: 0,
+      explanation: "Low-clearance bridges will shear off trailers or cargos cleanly. You must always know your vehicle's exact vertical height and verify that the posted clearance sign allows safe passage with at least a few inches of safety margin."
+    },
+    {
+      question: "What is a 'dynamic load shift' in heavy transport operations, and when is it most dangerous?",
+      answers: [
+        "The shifting of weight when accelerating, braking, or turning; most dangerous during abrupt control inputs.",
+        "The loss of engine power due to alternator failure; most dangerous when climbing steep off-road hills.",
+        "The wear on tire treads from driving on paved roads; most dangerous during high-temperature summer runs.",
+        "The venting of air from the cabin suspension seats; most dangerous when driving over deep potholes."
+      ],
+      correct: 0,
+      explanation: "Dynamic load shifts happen when accelerating, braking, or cornering. Abrupt steer or brake inputs cause the massive mass of your cargo to slam toward one side, overwhelming the tires and suspension and causing roll-overs or loss of control."
+    },
+    {
+      question: "When backing up a heavy transport vehicle with a trailer, turning the steering wheel to the left will:",
+      answers: [
+        "Cause the rear of the trailer to move to the right, requiring careful and minimal steering inputs.",
+        "Cause the rear of the trailer to move to the left, identical to driving a standard single chassis.",
+        "Lock the trailer brakes automatically to prevent the trailer from jackknifing under heavy load.",
+        "Disengage the fifth-wheel locking pin, letting the tractor unit pivot freely on the kingpin."
+      ],
+      correct: 0,
+      explanation: "When backing up an articulated trailer, the trailer moves in the opposite direction of the steering input. Turning the wheel left pushes the tractor's rear to the right, angling the trailer to the right. Minimal inputs are key to avoiding jackknifing."
+    },
+    {
+      question: "How should a heavy transport driver check for hot brakes or brake drum expansion during a rest stop?",
+      answers: [
+        "Walk around the vehicle carefully, checking for a burnt smell or extreme heat radiating from the hubs.",
+        "Touch the brake drum directly with your hand to verify the exact temperature of the metal surfaces.",
+        "Pour cold water over the hot brake drums to see if they crack under the sudden temperature change.",
+        "Apply full parking brakes and check if the dashboard air pressure gauge drops below safe levels."
+      ],
+      correct: 0,
+      explanation: "Brake drums can exceed 500 degrees Fahrenheit. Touching them directly will cause severe burns, and pouring water on them can crack the metal. Check by placing your hand near (but not touching) the hub to feel for radiating heat and smell for burning pads."
+    },
+    {
+      question: "Under-inflated tires on a heavy transport vehicle carrying maximum payload will:",
+      answers: [
+        "Generate extreme heat from excessive sidewall flexing, potentially leading to a catastrophic blowout.",
+        "Improve fuel economy significantly by increasing the surface contact area of the rubber treads.",
+        "Decrease the overall stopping distance of the truck by absorbing more braking kinetic energy.",
+        "Prevent the air brakes from locking up by absorbing the vibrations of the brake pad contacts."
+      ],
+      correct: 0,
+      explanation: "Heavy weight causes tires to bulge. If under-inflated, the tire sidewalls will flex excessively as the tire spins under load. This rapid flexing generates extreme heat, which breaks down the rubber and causes a sudden highway blowout."
+    },
+    {
+      question: "What is the primary function of lubricating the fifth-wheel plate on a heavy transport tractor?",
+      answers: [
+        "To prevent metal-on-metal friction and binding between the tractor and trailer plates during turns.",
+        "To seal the electrical connection pins that transmit power to the trailer's rear brake lights.",
+        "To ensure the Kingpin locking jaws can slide open automatically when the vehicle stops moving.",
+        "To absorb the vertical vibrations of the trailer suspension to keep the tractor cabin comfortable."
+      ],
+      correct: 0,
+      explanation: "The trailer plate slides across the tractor's fifth-wheel plate when turning. If they are dry, they can bind together, locking your steering in a straight line or causing severe steering drag that can pull you off the road."
+    },
+    {
+      question: "If your air brake system's compressor runs continuously instead of cycling on and off, this indicates:",
+      answers: [
+        "A severe leak in the air lines or reservoirs, requiring immediate shutdown and inspection.",
+        "Normal operating conditions when hauling maximum payloads over high-altitude mountain passes.",
+        "The automatic engine governor has failed and is forcing the engine to produce excess vacuum.",
+        "The trailer spring brakes have engaged manually and are drawing extra power from the engine."
+      ],
+      correct: 0,
+      explanation: "The air compressor should only run until the tanks hit their maximum cutout pressure (around 120-130 PSI). If it runs continuously, it means there is a major leak in your lines or tanks that is preventing the system from reaching cutout pressure."
+    },
+    {
+      question: "When transporting a load that extends beyond the sides or rear of a heavy transport vehicle:",
+      answers: [
+        "Mark the extremities with red or amber warning flags (or lights at night) and check local legal limits.",
+        "Drive only in reverse gears to ensure the extending cargo is always in your direct line of sight.",
+        "Maintain maximum speed to use the aerodynamic slipstream to pull the extending cargo inward.",
+        "Instruct your passenger to hold the extending sections with their hands to keep them stable."
+      ],
+      correct: 0,
+      explanation: "Overhanging cargo is a major hazard to other road users and structures. You must mark the ends of the cargo with high-visibility warning flags or lights to warn other drivers, and ensure the overhang fits within legal width/length limits."
+    },
+    {
+      question: "Why should you never engage the differential lock when driving on a high-speed, dry asphalt highway?",
+      answers: [
+        "It prevents the wheels from turning at different speeds in a corner, causing severe tire scrub and gear damage.",
+        "It disables the vehicle's engine braking capability, leading to a rapid loss of speed control.",
+        "It forces the transmission to stay in the lowest gear, causing the engine to overspeed immediately.",
+        "It cuts off the flow of gear oil to the rear axle bearings, leading to immediate differential seizure."
+      ],
+      correct: 0,
+      explanation: "When turning, the outer wheel must travel a longer path (and spin faster) than the inner wheel. If the differential is locked on dry pavement, the tires cannot slip, forcing the steel gears inside to bind and break under immense torque."
+    },
+    {
+      question: "What is the primary danger of using the trailer hand brake (trolley valve) to park a heavy transport vehicle?",
+      answers: [
+        "The air pressure will eventually leak off, releasing the trailer brakes and causing the vehicle to roll.",
+        "It will overheat the trailer brake linings immediately, causing a fire in the rear axle assembly.",
+        "It will lock up the steering wheels on the front axle, making the tractor impossible to steer.",
+        "It will disconnect the main fifth-wheel coupling jaws, letting the trailer slide off the tractor."
+      ],
+      correct: 0,
+      explanation: "The trolley valve uses service air pressure, which naturally leaks out over time when the engine is shut down. If used to park, the brakes will eventually release on their own, letting the truck roll away. Always use the yellow spring-loaded parking brake."
+    },
+    {
+      question: "What is the primary operational advantage of an exhaust brake or engine retarder on a heavy transport vehicle?",
+      answers: [
+        "It provides non-friction braking power, saving your service brakes and preventing them from fading.",
+        "It increases the engine's horsepower output significantly by recycling hot exhaust gases back into cylinders.",
+        "It reduces the volume of black smoke emitted from the exhaust stack during tactical combat runs.",
+        "It cools the engine cooling system rapidly by drawing in extra fresh air through the turbocharger."
+      ],
+      correct: 0,
+      explanation: "Exhaust brakes and engine retarders (Jake brakes) use engine compression and backpressure to slow the vehicle's drive axles. Since this is non-friction braking, it does not generate heat, keeping your service brakes cold and ready for emergency stops."
+    },
+    {
+      question: "Placing a heavy payload too far forward on a heavy transport trailer will:",
+      answers: [
+        "Overload the tractor's steer and drive axles, making steering heavy and potentially damaging suspension.",
+        "Cause the trailer wheels to slide easily during braking due to a complete lack of downward weight.",
+        "Increase the vehicle's turning circle significantly by locking up the front axle steering box.",
+        "Prevent the air compressor from building up pressure by putting too much physical load on the engine."
+      ],
+      correct: 0,
+      explanation: "Too much weight at the front of the trailer loads the fifth wheel excessively, transferring extreme weight to the tractor's rear and steer axles. This can exceed legal limits, damage suspension components, and make the steering feel dangerously stiff."
+    },
+    {
+      question: "Why must air brake reservoirs (tanks) be drained regularly on heavy transport vehicles?",
+      answers: [
+        "To remove water and oil that condenses inside, which can cause brake failure or freeze in cold weather.",
+        "To release excess air pressure that can crack the steel casing of the storage tanks over time.",
+        "To flush out worn rubber brake pad dust that accumulates inside the pneumatic air lines.",
+        "To allow the engine cooling system to draw in fresh air to cool down the compressor cylinder head."
+      ],
+      correct: 0,
+      explanation: "As air is compressed, moisture in the air condenses into water inside the steel tanks. If not drained, this water can rust the tanks, mix with compressor oil to clog brake valves, or freeze in cold weather, completely disabling your brakes."
+    },
+    {
+      question: "How do off-road operational weight limits compare to paved-road weight limits for a heavy transport truck?",
+      answers: [
+        "Off-road limits are significantly lower because the uneven terrain subjects the suspension to extreme dynamic loads.",
+        "Off-road limits are much higher because there are no legal highway weight stations or regulatory limits.",
+        "Off-road limits are exactly the same as paved-road limits because the structural steel frame does not change.",
+        "Off-road limits only apply when driving through deep water channels, not on dry dirt trails or gravel."
+      ],
+      correct: 0,
+      explanation: "Off-road terrain subjects your suspension and axles to severe jolts, twisting forces, and weight transfers. To prevent structural failure of the chassis, axles, or wheels, off-road weight limits are typically cut by 30% to 50% compared to smooth highway limits."
+    },
+    {
+      question: "What is the primary indicator of an impending rollover when steering a top-heavy transport vehicle?",
+      answers: [
+        "Excessive cabin lean, tire squeal, and a slow, spongy response from the steering wheel.",
+        "A rapid increase in engine RPM accompanied by a sudden drop in transmission oil temperature.",
+        "The automatic disengagement of the front drive axle differential locks on the highway.",
+        "A high-pitched whistle from the air brake relief valves on the rear trailer axles."
+      ],
+      correct: 0,
+      explanation: "A top-heavy vehicle will lean heavily in a turn. If the steering starts to feel soft or slow, it means the inner tires are losing contact with the ground and transferring all weight to the outer suspension, indicating you are on the verge of flipping."
+    },
+    {
+      question: "In a heavy transport air brake system, what physically happens when the system loses all air pressure?",
+      answers: [
+        "Powerful mechanical springs inside the brake chambers are released, locking the brakes automatically.",
+        "The brake pedal locks in the fully depressed position, forcing the hydraulic valves to stay open.",
+        "The transmission is shifted into park automatically by an electronic backup solenoid valve.",
+        "The vehicle's engine shuts down immediately to prevent the truck from moving without brakes."
+      ],
+      correct: 0,
+      explanation: "Air brakes use air pressure to keep the powerful emergency springs inside the brake chambers compressed (held back). If air pressure falls below around 20-45 PSI, the air can no longer hold the springs, causing them to release and lock the brakes."
+    }
+  ];
+
+  let currentQuestions = [];
+  let currentQuestionIndex = 0;
+  let score = 0;
+  let answered = false;
+
+  function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  function initExam() {
+    currentQuestions = shuffleArray(QUESTION_POOL).slice(0, 30);
+    
+    // Shuffle answers for each question
+    currentQuestions.forEach(q => {
+      const correctAnswer = q.answers[q.correct];
+      const shuffled = shuffleArray(q.answers.map((ans, idx) => ({ ans, idx })));
+      q.answers = shuffled.map(item => item.ans);
+      q.correct = shuffled.findIndex(item => item.idx === q.correct);
+    });
+    
+    currentQuestionIndex = 0;
+    score = 0;
+    answered = false;
+    displayQuestion();
+  }
+
+  function displayQuestion() {
+    const container = document.getElementById('question-container');
+    const question = currentQuestions[currentQuestionIndex];
+    
+    answered = false;
+    
+    container.innerHTML = `
+      <div class="question-card">
+        <div class="question-number">Question ${currentQuestionIndex + 1} of 30</div>
+        <div class="question-text">${question.question}</div>
+        <div class="answers" id="answers"></div>
+        <div id="explanation-container"></div>
+        <button class="btn next-btn hidden" id="next-btn" onclick="nextQuestion()">NEXT QUESTION</button>
+      </div>
+    `;
+    
+    const answersContainer = document.getElementById('answers');
+    question.answers.forEach((answer, index) => {
+      const btn = document.createElement('button');
+      btn.className = 'answer-btn';
+      btn.textContent = answer;
+      btn.onclick = () => checkAnswer(index);
+      answersContainer.appendChild(btn);
+    });
+    
+    updateProgress();
+  }
+
+  function checkAnswer(selectedIndex) {
+      if (answered) return;
+
+      answered = true;
+      const question = currentQuestions[currentQuestionIndex];
+      const answerButtons = document.querySelectorAll('.answer-btn');
+      const explanationContainer = document.getElementById('explanation-container');
+
+      answerButtons.forEach(btn => btn.disabled = true);
+
+      if (selectedIndex === question.correct) {
+          score++;
+          answerButtons[selectedIndex].classList.add('correct');
+      } else {
+          answerButtons[selectedIndex].classList.add('incorrect');
+          answerButtons[question.correct].classList.add('correct');
+      }
+
+      explanationContainer.innerHTML = `
+      <div class="explanation">
+        <strong>EXPLANATION:</strong> ${question.explanation}
+      </div>
+    `;
+
+      document.getElementById('next-btn').classList.remove('hidden');
+      updateProgress();
+  }
+
+  function updateProgress() {
+      document.getElementById('current-q').textContent = currentQuestionIndex + 1;
+      document.getElementById('score').textContent = score;
+      const percentage = ((score / (currentQuestionIndex + (answered ? 1 : 0))) * 100).toFixed(0);
+      document.getElementById('percentage').textContent = percentage + '%';
+  }
+
+  function nextQuestion() {
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex >= currentQuestions.length) {
+          showResults();
+      } else {
+          displayQuestion();
+      }
+  }
+
+  function showResults() {
+      const container = document.getElementById('question-container');
+      const resultContainer = document.getElementById('result-container');
+      const formContainer = document.getElementById('form-container');
+
+      container.classList.add('hidden');
+      document.getElementById('exam-progress').classList.add('hidden');
+      resultContainer.classList.remove('hidden');
+
+      const percentage = ((score / 30) * 100).toFixed(1);
+      const passed = score >= 27; // 90% of 30 is 27
+
+      resultContainer.innerHTML = `
+      <div class="result-screen ${passed ? 'pass' : 'fail'}">
+        <div class="result-status">${passed ? 'PASS' : 'FAIL'}</div>
+        <div class="result-score">${score} / 30 (${percentage}%)</div>
+        <div class="result-message">
+          ${passed
+              ? 'You have passed the Heavy Transport written examination. Complete the form below to schedule your in-game practical evaluation with a driver instructor.'
+              : 'You did not achieve the required 90% passing score. Review the material and retake the examination.'}
+        </div>
+        ${!passed ? '<button class="btn" onclick="location.reload()">RETAKE EXAM</button>' : ''}
+      </div>
+    `;
+
+      if (passed) {
+          formContainer.classList.remove('hidden');
+          formContainer.innerHTML = `
+        <div class="form-container">
+          <h2>POST-EXAM GROUND CERTIFICATION FORM</h2>
+          <p>Your written exam results will be forwarded to the ground instructor cadre. Complete this form to begin the practical scheduling process.</p>
+          
+          <form id="cert-form">
+            <div class="form-group">
+              <label for="discord">DISCORD USERNAME *</label>
+              <input type="text" id="discord" required placeholder="username#0000">
+            </div>
+            
+            <div class="form-group">
+              <label for="callsign">IN-GAME CALLSIGN *</label>
+              <input type="text" id="callsign" required placeholder="Your tactical callsign">
+            </div>
+            
+            <div class="form-group">
+              <label for="availability">AVAILABILITY / TIMEZONE *</label>
+              <textarea id="availability" required placeholder="Preferred days/times and timezone (e.g., Weekends 1800-2200 UTC, Mon-Fri after 2000 EST)"></textarea>
+            </div>
+            
+            <button type="submit" class="btn">SUBMIT GROUND CERTIFICATION REQUEST</button>
+          </form>
+          
+          <div id="form-response" class="hidden"></div>
+        </div>
+      `;
+
+          document.getElementById('cert-form').addEventListener('submit', handleFormSubmit);
+      }
+  }
+
+  function handleFormSubmit(e) {
+      e.preventDefault();
+
+      // Secure, anonymous Cloudflare Driver Webhook proxy URL
+      const CLOUDFLARE_WORKER_URL = 'https://wardogs-driver-webhook.arsenalapi.workers.dev';
+
+      const formResponse = document.getElementById('form-response');
+      formResponse.classList.remove('hidden');
+      formResponse.innerHTML = `
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>TRANSMITTING TO GROUND INSTRUCTOR CADRE...</p>
+      </div>
+    `;
+
+      // Get form values
+      const discordUser = document.getElementById('discord').value;
+      const callsignUser = document.getElementById('callsign').value;
+      const availabilityUser = document.getElementById('availability').value;
+
+      // Detect which exam they completed based on page URL
+      let examType = 'Heavy Transport';
+      const percentage = ((score / 30) * 100).toFixed(1);
+
+      // Format a tactical Discord embed payload
+      const discordPayload = {
+          username: "Wardogs Ground Command",
+          embeds: [
+              {
+                  title: "🛞 NEW DRIVER LICENSING APPLICATION 🛞",
+                  description: "A candidate has successfully passed the written ground examination and is ready for a practical evaluation.",
+                  color: 16763904, // Tactical Amber/Yellow in decimal
+                  fields: [
+                      {
+                          name: "👤 Candidate Details",
+                          value: `**Discord:** ${discordUser}\n**Callsign:** ${callsignUser}`,
+                          inline: false
+                      },
+                      {
+                          name: "🛞 Driver Track",
+                          value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 30 (${percentage}%)`,
+                          inline: false
+                      },
+                      {
+                          name: "📅 Availability & Timezone",
+                          value: availabilityUser,
+                          inline: false
+                      }
+                  ],
+                  footer: {
+                      text: "Wardogs Unofficial Ground Academy • Remember: Don't flip. Don't crash."
+                  },
+                  timestamp: new Date().toISOString()
+              }
+          ]
+      };
+
+      // Perform a standard POST request directly to your secure Cloudflare Worker
+      fetch(CLOUDFLARE_WORKER_URL, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(discordPayload)
+      })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Failed to transmit application to Cloudflare.');
+              }
+
+              // Show success message once the request is complete
+              formResponse.innerHTML = `
+        <div class="success-message">
+          <h3 style="color: var(--tactical-yellow); margin-bottom: 20px;">✓ TRANSMISSION SUCCESSFUL</h3>
+          <p>Your written driving exam results have been registered. Stand by for contact via Discord to schedule your in-game practical driving evaluation.</p>
+          <p style="margin-top: 20px; color: var(--tactical-red); font-weight: 700;">REMEMBER THE RULES:</p>
+          <p style="color: var(--tactical-red);">If you flip the vehicle, you fail.</p>
+          <p style="color: var(--tactical-red);">If you get stuck or run too slow, you fail.</p>
+          <p style="margin-top: 20px;">Precision maneuvering is mandatory. Good luck, driver.</p>
+        </div>
+      `;
+
+              document.getElementById('cert-form').style.display = 'none';
+          })
+          .catch(error => {
+              console.error('Error submitting application:', error);
+
+              formResponse.innerHTML = `
+        <div class="success-message" style="border-color: var(--tactical-red);">
+          <h3 style="color: var(--tactical-red); margin-bottom: 20px;">⚠️ TRANSMISSION ERROR</h3>
+          <p>There was a connection issue forwarding your application to ground command. Please take a screenshot of your passing score (${score}/30) and contact a driving instructor directly on Discord.</p>
+        </div>
+      `;
+          });
+  }
+
+  initExam();
+  </script>
+</body>
+</html>

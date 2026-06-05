@@ -65,6 +65,54 @@ nav {
   gap: 0;
 }
 
+/* Dropdown behavior */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown > a {
+  cursor: pointer;
+}
+
+.nav-dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--gunmetal);
+  border: 2px solid rgba(255,255,255,0.06);
+  min-width: 260px;
+  list-style: none;
+  padding: 8px 0;
+  margin: 6px 0 0 0;
+  display: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  z-index: 1200;
+  border-radius: 4px;
+}
+
+.nav-dropdown-list li a {
+  display: block;
+  padding: 10px 18px;
+  color: var(--crisp-white);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  border-left: none;
+}
+
+.nav-dropdown-list li a:hover {
+  background: var(--tactical-yellow);
+  color: var(--deep-black);
+}
+
+/* Reveal on hover or when focused (supports click-to-focus) */
+.nav-dropdown:hover .nav-dropdown-list,
+.nav-dropdown:focus-within .nav-dropdown-list {
+  display: block;
+}
+
 .nav-links a {
   display: block;
   padding: 20px 25px;

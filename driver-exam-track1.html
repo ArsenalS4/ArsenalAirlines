@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Driver Exam — Track 1: Light Transport | WARDOGS</title>
+  <meta name="description" content="Wardogs Light Transport Driver Examination — written test for Track 1 (Small Transport). 30 questions, 90% pass required.">
+  <link rel="canonical" href="https://wardogspilots.com/driver-exam-track1.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Driver Exam — Track 1: Light Transport" />
+  <meta property="og:description" content="Wardogs Light Transport Driver Examination — small transport written test." />
+  <meta property="og:image" content="/WD_Screenshot_Littlebird_2.jpg" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <div class="disclaimer">
+    ⚠️ UNOFFICIAL WARDOGS PILOT LICENSING PORTAL - FAN CREATED ⚠️
+  </div>
+
+  <nav>
+    <div class="nav-container">
+      <img src="/WD_Fullmark_Full.png" alt="WARDOGS Logo" class="nav-logo">
+      <ul class="nav-links">
+        <li><a href="index.html">PILOTS</a></li>
+        <li><a href="requirements.html">PILOT REQUIREMENTS</a></li>
+        <li><a href="exam-littlebird.html">LITTLE BIRD</a></li>
+        <li><a href="exam-huey.html">HUEY</a></li>
+        <li><a href="drivers.html">DRIVERS</a></li>
+        <li><a href="driver-requirements.html">DRIVER REQUIREMENTS</a></li>
+        <li class="nav-dropdown">
+          <a href="#" aria-haspopup="true" aria-expanded="false">DRIVER EXAMS ▾</a>
+          <ul class="nav-dropdown-list">
+            <li><a href="driver-exam-track1.html" class="active">Track 1 — Small Transport</a></li>
+            <li><a href="driver-exam-track2.html">Track 2 — Heavy Transport</a></li>
+            <li><a href="driver-exam-track3.html">Track 3 — Weaponized</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero" role="banner">
+    <img src="/WD_Screenshot_Littlebird_2.jpg" alt="Driver exam hero image" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>DRIVER EXAM — TRACK 1</h1>
+      <p>LIGHT TRANSPORT / SMALL VEHICLE OPERATIONS</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="exam-container">
+      <div class="exam-header">
+        <h1>LIGHT TRANSPORT EXAM</h1>
+        <p>SMALL TRANSPORT DRIVER TEST</p>
+      </div>
+
+      <div id="exam-progress" class="exam-progress">
+        <div class="progress-item">
+          <div class="progress-label">Question</div>
+          <div class="progress-value"><span id="current-q">1</span>/30</div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label">Correct</div>
+          <div class="progress-value" id="score">0</div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label">Progress</div>
+          <div class="progress-value" id="percentage">0%</div>
+        </div>
+      </div>
+
+      <div id="question-container"></div>
+      <div id="result-container" class="hidden"></div>
+      <div id="form-container" class="hidden"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-disclaimer">
+      ⚠️ UNOFFICIAL WARDOGS PILOT LICENSING PORTAL - FAN CREATED ⚠️
+    </div>
+    <div class="footer-info">
+      WARDOGS is a trademark of BULKHEAD. This portal is an unofficial fan project and is not affiliated with or endorsed by BULKHEAD.
+    </div>
+  </footer>
+
+  <script>
+  // ===================================================
+  // Wardogs Light Transport Driver Examination
+  // ===================================================
+
+  const QUESTION_POOL = [
+    {
+      question: "When driving a light transport vehicle down a steep, loose dirt slope, the driver should:",
+      answers: [
+        "Avoid heavy braking, use engine compression to control speed, and steer straight down the slope.",
+        "Apply full brakes continuously, and zig-zag down the slope to reduce sliding speed.",
+        "Shift into neutral, coast down, and use emergency brakes to help steer the rear tires.",
+        "Accelerate rapidly to clear the slope quickly before losing wheel traction on the dirt."
+      ],
+      correct: 0,
+      explanation: "Steering straight down the slope prevents the vehicle from sliding sideways and rolling over. Easing off the brakes and letting engine compression control your speed prevents the tires from locking up and sliding on loose soil."
+    },
+    {
+      question: "If your light transport vehicle begins to slide wide (understeer) while taking a fast turn on gravel, you should:",
+      answers: [
+        "Gently ease off the throttle, straighten the steering wheel slightly, and let the front tires regain grip.",
+        "Pull the emergency brake hard, slam on the accelerator, and steer deeply into the direction of the slide.",
+        "Turn the steering wheel harder in the direction of the turn and apply full, heavy brakes.",
+        "Shift the transmission into reverse immediately to force the wheels to counter-spin and slow down."
+      ],
+      correct: 0,
+      explanation: "Understeer happens when the front tires lose traction and slide. Turning harder only worsens the slide. You must gently reduce power and slightly straighten the wheels so the tires can stop sliding and hook up with the gravel again."
+    },
+    {
+      question: "Before crossing a shallow river or water hazard in a light transport vehicle, you must:",
+      answers: [
+        "Assess depth and current speed, select a low gear, and maintain a slow, steady forward pace.",
+        "Charge into the water at maximum speed to use the vehicle's momentum to cross over.",
+        "Shift into reverse first to test the entry traction before crossing the main deep channel.",
+        "Deflate all tires completely to allow the vehicle's body to float across the deep water."
+      ],
+      correct: 0,
+      explanation: "Always check water depth first. Entering slowly in a low gear prevents water from splashing over the hood and into the engine intake (which causes catastrophic engine failure called hydrolock), while maintaining traction."
+    },
+    {
+      question: "What is the primary operational benefit of lower tire pressure when driving on loose sand or deep mud?",
+      answers: [
+        "It increases the tire's footprint, distributing weight and greatly improving overall traction.",
+        "It increases the vehicle's top speed by reducing the rolling resistance of the rubber treads.",
+        "It protects the suspension from absorbing shocks when hitting large hidden rocks or debris.",
+        "It prevents the engine from overheating by reducing the rotation loads on the drive shafts."
+      ],
+      correct: 0,
+      explanation: "Lowering tire pressure (airing down) allows the tire to flatten slightly. This increases the surface area (footprint) of the tire in contact with the ground, spreading the vehicle's weight and keeping it from sinking into loose surfaces."
+    },
+    {
+      question: "When navigating highly uneven terrain, which action most significantly increases your risk of rolling over?",
+      answers: [
+        "Driving perpendicular to a steep side slope instead of driving straight up or down it.",
+        "Maintaining a slow, steady throttle input while keeping the front wheels pointed straight ahead.",
+        "Choosing a path that keeps all four tires in contact with the ground at all times.",
+        "Shifting into a lower gear to increase torque and control when climbing over loose rocks."
+      ],
+      correct: 0,
+      explanation: "Driving sideways across a steep slope (perpendicularly) exposes your vehicle's side profile to gravity. If a downslope wheel dips or an upslope wheel hits a bump, the center of gravity will shift beyond the track width, causing an immediate rollover."
+    },
+    {
+      question: "How does a heavy cargo load in the rear bed of a light transport truck affect its steering?",
+      answers: [
+        "It lightens the front end, reducing steering grip and increasing the risk of understeer.",
+        "It heavily increases front-wheel traction, making the steering feel extremely sensitive.",
+        "It completely disables the rear brakes, forcing the front wheels to do all the stopping.",
+        "It increases the top speed of the vehicle by pushing the rear drive tires down."
+      ],
+      correct: 0,
+      explanation: "Heavy weight in the rear creates a seesaw effect over the rear axle, pulling weight off the front steering tires. With less weight pushing the front tires into the dirt, steering response becomes loose, slow, and prone to sliding straight (understeer)."
+    },
+    {
+      question: "When cresting a steep sand dune in a light transport vehicle, why must you ease off the throttle right before the top?",
+      answers: [
+        "To prevent the vehicle from launching into the air and damaging its suspension on landing.",
+        "To allow the cooling fan to spin faster and reduce the transmission fluid temperature.",
+        "To ensure the anti-lock braking system can recalibrate for the descent on the other side.",
+        "To give passengers time to inspect the terrain ahead before the vehicle starts to slide."
+      ],
+      correct: 0,
+      explanation: "Charging over a crest at full throttle will launch the vehicle off the top of the dune. This can cause severe suspension damage, frame damage, passenger injuries, or result in landing nose-first into a steep pocket on the other side."
+    },
+    {
+      question: "When driving a light transport vehicle under tactical blackout conditions using night vision:",
+      answers: [
+        "Reduce your speed significantly to compensate for reduced depth perception and peripheral vision.",
+        "Maintain normal daytime speeds to avoid becoming an easy target for ground forces.",
+        "Turn on your high beams occasionally to verify the path shown on your NVG screen.",
+        "Drive strictly in reverse to minimize the vehicle's forward light and heat signature."
+      ],
+      correct: 0,
+      explanation: "Night vision goggles (NVGs) flatten your depth perception and restrict your field of view to a narrow tube. You must drive slower than normal to give yourself enough time to react to ditches, rocks, and obstacles you cannot see in your periphery."
+    },
+    {
+      question: "What is the correct way to drive a light utility vehicle over a high obstacle like a fallen log or rock ridge?",
+      answers: [
+        "Approach at an angle so only one tire climbs the obstacle at a time, keeping others on the ground.",
+        "Approach straight on at high speed to force the vehicle to jump cleanly over the barrier.",
+        "Slam on the brakes right before contact to let the front bumper push the obstacle out of the way.",
+        "Shift into the highest gear possible to maximize the rotational speed of the front drive tires."
+      ],
+      correct: 0,
+      explanation: "Approaching at an angle ensures that three wheels are always providing stable traction on flat ground while one wheel climbs. Approaching straight on risks slamming the front bumper or high-centering the vehicle's undercarriage on the ridge."
+    },
+    {
+      question: "In a light transport convoy, what is the primary purpose of maintaining a consistent 3 to 4 vehicle-length gap?",
+      answers: [
+        "To ensure adequate reaction time for sudden stops and to avoid blinding dust clouds from lead.",
+        "To allow civilian vehicles to pass safely through the military column without interrupting flow.",
+        "To keep the vehicles close enough to share a single radio communications channel.",
+        "To prevent the engines of trailing vehicles from running too cool in cold weather conditions."
+      ],
+      correct: 0,
+      explanation: " convoy spacing provides a reaction window if the lead vehicle brakes or crashes. Off-road, it also ensures trailing drivers aren't blinded by the thick dust cloud kicked up by the leading vehicle's tires, which can hide obstacles."
+    },
+    {
+      question: "What causes 'brake fade' during long descents in a light transport vehicle, and how do you prevent it?",
+      answers: [
+        "Overheating of brake components; prevent it by using engine braking and shifting to a lower gear.",
+        "Loss of hydraulic brake fluid pressure; prevent it by pumping the brake pedal rapidly during turns.",
+        "Glazing of the tire rubber surfaces; prevent it by drifting around corners to clean the treads.",
+        "Excessive engine vacuum pressure build-up; prevent it by revving the engine in neutral while coasting."
+      ],
+      correct: 0,
+      explanation: "Brake fade happens when constant heavy braking generates extreme heat, causing the brake pads and rotors to lose friction. Shifting into a low gear forces the engine compression to hold back the vehicle's weight (engine braking), saving your brakes."
+    },
+    {
+      question: "When using a winch to pull a stuck light vehicle out of deep mud, you must always:",
+      answers: [
+        "Place a heavy dampener over the winch cable to prevent a dangerous snap if the line breaks.",
+        "Keep the vehicle's engine turned off to prevent overloading the electrical alternator system.",
+        "Stand directly next to the winch line to guide the cable onto the spool with your hands.",
+        "Run the winch at maximum speed without stopping to prevent the motor from cooling down too fast."
+      ],
+      correct: 0,
+      explanation: "A winch line is under immense tension. If it snaps, the cable will whip back with lethal force. Placing a heavy jacket, blanket, or cable dampener over the middle of the line absorbs the energy and drops the cable safely to the ground if it breaks."
+    },
+    {
+      question: "During tactical transport operations, if the lead vehicle spots an obstacle, they should:",
+      answers: [
+        "Signal the hazard over the radio or via hand signals to warn the trailing vehicles immediately.",
+        "Stop abruptly without warning to test the reaction speed of the drivers behind them.",
+        "Accelerate quickly over the obstacle to show the path is safe to navigate at speed.",
+        "Turn off all lights and pull over to let the trailing vehicles take the lead instead."
+      ],
+      correct: 0,
+      explanation: "Lead vehicles are the eyes of the convoy. Any spotter or lead driver must immediately call out road hazards, traps, or deep obstacles to ensure trailing vehicles have ample time to steer clear or adjust their approach."
+    },
+    {
+      question: "When should you engage the differential lock (diff lock) on a light transport vehicle?",
+      answers: [
+        "Before entering loose, slippery, or mud-heavy terrain where wheels are likely to spin and lose grip.",
+        "When driving at high speeds on dry asphalt roads to improve cornering stability and turn radius.",
+        "Only after the vehicle has become completely stuck and the engine has stalled in deep water.",
+        "When descending steep paved highways to prevent the brakes from locking up during a hard stop."
+      ],
+      correct: 0,
+      explanation: "Engaging the differential lock forces both wheels on an axle to turn at the exact same speed. This prevents one wheel from spinning uselessly in the mud while the other wheel with grip sits completely still. Do not use it on dry pavement as it binds the gears."
+    },
+    {
+      question: "If your front wheels lose steering grip in deep mud, what is the best way to regain steering control?",
+      answers: [
+        "Turn the steering wheel slightly back and forth to let the side treads of the tires bite into fresh dirt.",
+        "Spin the tires at maximum RPM while holding the steering wheel locked in one direction.",
+        "Apply full emergency brakes while turning the steering wheel rapidly from side to side.",
+        "Turn off the engine, shift into park, and let the vehicle slide to a complete stop on its own."
+      ],
+      correct: 0,
+      explanation: "Wiggling the steering wheel left and right (sawing the wheel) allows the sidewall lugs and outer edges of your front tires to bite into fresh mud, helping clear the mud out of the tread and redirecting the vehicle's path."
+    },
+    {
+      question: "When driving off-road, why should you avoid driving through tall grass or deep brush whenever possible?",
+      answers: [
+        "It can hide dangerous obstacles like large rocks, deep holes, or stumps that can damage the vehicle.",
+        "The seeds from the tall grass will clog the exhaust system and cause an immediate engine fire.",
+        "Tall brush will scratch the paint and reduce the camouflage effectiveness of the vehicle's body.",
+        "The plants release chemical compounds that degrade the rubber compounds of off-road tires."
+      ],
+      correct: 0,
+      explanation: "Tall grass completely masks the ground surface. Underneath, there could be a massive boulder, a hidden tree stump, or a deep wash-out trench that will shear off your suspension components or cause an immediate rollover."
+    },
+    {
+      question: "When parking a manual light transport vehicle on an uphill slope, you should:",
+      answers: [
+        "Apply the handbrake, shift the transmission into first gear, and turn the wheels away from the curb.",
+        "Leave the vehicle in neutral, apply the handbrake, and keep the front wheels perfectly straight.",
+        "Shift into reverse gear, release the handbrake, and turn the wheels directly into the curb.",
+        "Leave the engine idling in neutral and place a small rock under one of the front tires."
+      ],
+      correct: 0,
+      explanation: "Leaving the transmission in first gear acts as a mechanical backup to your handbrake. Turning the wheels away from the curb ensures that if the vehicle does slip backward, the front tires will catch the curb and stop the vehicle's rolling motion."
+    },
+    {
+      question: "If your engine temperature gauge spikes into the red zone while climbing a steep mountain pass, you should:",
+      answers: [
+        "Pull over safely, let the engine idle, and turn on the cabin heater to help vent engine heat.",
+        "Turn off the engine immediately while moving, shift into neutral, and coast down the mountain.",
+        "Pour cold bottled water directly over the hot radiator cap to cool it down as fast as possible.",
+        "Accelerate to maximum speed to force more cold air through the front grill of the vehicle."
+      ],
+      correct: 0,
+      explanation: "Turning on the cabin heater acts as a secondary radiator, drawing heat away from the engine block and blowing it into the cabin. Letting the engine idle allows the water pump and cooling fan to continue circulating fluids to cool it down safely."
+    },
+    {
+      question: "What is the safest way to negotiate a steep downhill section on loose gravel or muddy terrain?",
+      answers: [
+        "Shift to a low gear, let engine compression control your speed, and keep the vehicle pointed straight down.",
+        "Put the vehicle in neutral, use the handbrake to steer, and slide down sideways to slow descent.",
+        "Ride the brakes heavily while turning the steering wheel rapidly to scrub off speed on the descent.",
+        "Accelerate down the hill to ensure the tires can clear any mud buildup in the tread patterns."
+      ],
+      correct: 0,
+      explanation: "Keeping the vehicle pointed straight down the fall line of the hill prevents sliding sideways, which leads to immediate roll-overs. Letting the engine control the speed prevents brake lockup and sliding."
+    },
+    {
+      question: "How does adding a roof rack with heavy gear affect the handling of a light transport vehicle?",
+      answers: [
+        "It raises the center of gravity, significantly increasing the risk of rolling over during sharp turns.",
+        "It lowers the center of gravity, greatly improving the vehicle's high-speed cornering stability.",
+        "It has no effect on handling because the weight is distributed evenly across the roof support pillars.",
+        "It increases front-wheel traction by pushing the front bumper down closer to the road surface."
+      ],
+      correct: 0,
+      explanation: "Weight added high up raises the vehicle's overall Center of Gravity (CG). When turning, centrifugal force will push this high weight outward, creating a severe body roll that can easily roll the vehicle over at high speeds."
+    },
+    {
+      question: "When shifting a 4WD light transport vehicle's transfer case into 'Low Range' (4-Low), what is the primary change?",
+      answers: [
+        "Engine torque is greatly multiplied, but the vehicle's top speed is significantly reduced.",
+        "The vehicle's top speed is doubled, but the available torque to the wheels is cut in half.",
+        "Power is sent only to the rear wheels to allow for high-speed drifting on dirt roads.",
+        "The automatic braking system is disabled to allow the wheels to lock up freely off-road."
+      ],
+      correct: 0,
+      explanation: "4-Low engages low gearing in the transfer case. This multiplies your engine's torque (pulling power) for climbing over steep rocks or through thick mud, but restricts the vehicle's top speed to very low limits."
+    },
+    {
+      question: "When operating a light transport vehicle with canvas side doors and rear covers, the driver must:",
+      answers: [
+        "Utilize side mirrors effectively and check blind spots frequently due to reduced direct visibility.",
+        "Rely entirely on passengers to tell them if the path behind the vehicle is clear to back up.",
+        "Keep the driver's side door open at all times to improve direct line-of-sight visibility.",
+        "Drive only in forward gears to eliminate the need to look behind the vehicle while moving."
+      ],
+      correct: 0,
+      explanation: "Canvas covers, plastic windows, and rear frames severely restrict your direct line of sight. Drivers must be highly proactive with their side mirrors and check blind spots constantly to avoid hitting soldiers, obstacles, or other vehicles."
+    },
+    {
+      question: "When driving in deep mud ruts left by heavy trucks, a light transport vehicle driver should:",
+      answers: [
+        "Avoid riding in the bottom of deep ruts to prevent 'high-centering' the vehicle on the middle ridge.",
+        "Keep their tires perfectly centered in the deepest part of the ruts to maximize tracking control.",
+        "Increase speed to slide over the middle ridge of the ruts without touching the bottom dirt.",
+        "Deflate all tires to zero pressure to allow the tires to wrap around the middle ridge."
+      ],
+      correct: 0,
+      explanation: "Heavy truck ruts are often deeper than the ground clearance of light transport vehicles. If you drive in the bottom of the ruts, your tires will sink until the undercarriage (differential/frame) hits the center ridge, lifting your tires off the ground (high-centering) and stranding you."
+    },
+    {
+      question: "When navigating an extremely tight or hazardous off-road trail, what is the role of a ground spotter?",
+      answers: [
+        "To stand outside the vehicle and guide the driver using clear, pre-arranged hand signals.",
+        "To run ahead of the vehicle and clear all loose rocks and sticks from the path manually.",
+        "To ride on the hood of the vehicle and point in the direction the driver should steer.",
+        "To maintain constant radio contact with flight command to report the vehicle's coordinates."
+      ],
+      correct: 0,
+      explanation: "A ground spotter stands outside the vehicle in a safe location where they can see both the tires, the trail hazards, and the driver. They use hand signals to guide the driver's tire placement over obstacles safely."
+    },
+    {
+      question: "If you feel your drive wheels spinning uselessly while trying to climb a loose dirt hill, you should:",
+      answers: [
+        "Ease off the throttle slightly to let the tires regain friction, rather than spinning them deeper.",
+        "Slam on the accelerator pedal to force the tires to burn through the loose topsoil layer.",
+        "Pump the brake pedal rapidly while keeping the accelerator pinned to the floorboards.",
+        "Shift the transmission into reverse immediately to try and climb the hill backwards instead."
+      ],
+      correct: 0,
+      explanation: "Spinning tires generates friction heat, which turns dirt to slick mud and digs the vehicle into a deeper hole. Easing off the throttle decreases the rotational speed, allowing the tire treads to grip the dirt and regain forward momentum."
+    },
+    {
+      question: "If your vehicle begins to slide sideways on a steep slope and feels like it is starting to roll over, you should:",
+      answers: [
+        "Instantly steer downhill and apply light throttle to stabilize the vehicle's weight distribution.",
+        "Turn the steering wheel hard uphill and apply full brakes to stop the sideways sliding motion.",
+        "Pull the emergency brake and jump out of the driver's side door immediately to safety.",
+        "Shift into neutral, turn off the engine, and brace yourself against the steering wheel."
+      ],
+      correct: 0,
+      explanation: "If you slide sideways, turning uphill will flip you instantly. Turning downhill aligns the vehicle's chassis with gravity (straight down), stabilizing the weight across the suspension and keeping the wheels on the ground."
+    },
+    {
+      question: "Why is it critical to avoid splashing water over the hood when crossing shallow water in a light utility vehicle?",
+      answers: [
+        "Water can enter the engine air intake, causing hydrolock and permanently destroying the engine.",
+        "Water on the hood will short out the front headlights and blow the main alternator fuse.",
+        "The weight of the water on the hood will push the front bumper down and cause a front-flip.",
+        "Water will wash away the anti-reflective paint coating on the hood, causing extreme glare."
+      ],
+      correct: 0,
+      explanation: "If water splashes up and enters the engine intake, the cylinders will suck in water instead of air. Since water cannot be compressed, the pistons will hit the water lock and instantly bend or break the internal engine rods (hydrolock), destroying the motor."
+    },
+    {
+      question: "Driving with the tailgate open and unsecured cargo extending out the back of a light transport vehicle:",
+      answers: [
+        "Is highly dangerous as it shifts the center of gravity aft and risks losing cargo on bumps.",
+        "Improves fuel economy significantly by reducing the aerodynamic drag on the rear of the truck.",
+        "Is recommended for off-road driving because it allows the rear tires to cool down faster.",
+        "Has no effect on safety as long as the driver maintains a slow, steady speed on flat pavement."
+      ],
+      correct: 0,
+      explanation: "Unsecured cargo can fall out on bumps, creating obstacles for convoys behind you. Additionally, shifting weight to the extreme rear pulls weight off your steering tires, making steering loose and dangerous."
+    },
+    {
+      question: "When driving off-road over rough, rocky terrain, why should you avoid wrapping your thumbs inside the steering wheel spokes?",
+      answers: [
+        "A sudden bump can jerk the front wheels and spin the steering wheel rapidly, breaking your thumbs.",
+        "It reduces the circulation of blood to your hands, causing rapid fatigue during long drives.",
+        "It blocks your view of the instrument cluster gauges and warning lights on the dashboard.",
+        "The friction of the spokes against your thumbs will wear away the grip material on the wheel."
+      ],
+      correct: 0,
+      explanation: "When off-road, hitting a large rock can suddenly force your front tires sideways. This force transmits through the steering linkage and snaps the steering wheel around violently. If your thumbs are wrapped inside, the spinning spokes will break them."
+    },
+    {
+      question: "How does driving at moderate speed on hard dirt right after leaving a deep mud hole help the vehicle?",
+      answers: [
+        "Centrifugal force flings the packed mud out of the tire treads, restoring grip for future obstacles.",
+        "The friction warms the tire rubber back up to its optimal operating temperature range.",
+        "It allows the mechanical four-wheel drive gears to disengage smoothly without grinding.",
+        "The wind clears the mud away from the front radiator grill, preventing engine cooling issues."
+      ],
+      correct: 0,
+      explanation: "Tire treads work by grabbing the ground. When packed solid with thick mud, they become smooth slicks. Driving on hard ground at a moderate speed flings the mud out of the treads, cleaning the tires so they are ready for the next off-road challenge."
+    }
+  ];
+
+  let currentQuestions = [];
+  let currentQuestionIndex = 0;
+  let score = 0;
+  let answered = false;
+
+  function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  function initExam() {
+    currentQuestions = shuffleArray(QUESTION_POOL).slice(0, 30);
+
+    // Shuffle answers for each question
+    currentQuestions.forEach(q => {
+      const correctAnswer = q.answers[q.correct];
+      const shuffled = shuffleArray(q.answers.map((ans, idx) => ({ ans, idx })));
+      q.answers = shuffled.map(item => item.ans);
+      q.correct = shuffled.findIndex(item => item.idx === q.correct);
+    });
+
+    currentQuestionIndex = 0;
+    score = 0;
+    answered = false;
+    displayQuestion();
+  }
+
+  function displayQuestion() {
+    const container = document.getElementById('question-container');
+    const question = currentQuestions[currentQuestionIndex];
+
+    answered = false;
+
+    container.innerHTML = `
+      <div class="question-card">
+        <div class="question-number">Question ${currentQuestionIndex + 1} of 30</div>
+        <div class="question-text">${question.question}</div>
+        <div class="answers" id="answers"></div>
+        <div id="explanation-container"></div>
+        <button class="btn next-btn hidden" id="next-btn" onclick="nextQuestion()">NEXT QUESTION</button>
+      </div>
+    `;
+
+    const answersContainer = document.getElementById('answers');
+    question.answers.forEach((answer, index) => {
+      const btn = document.createElement('button');
+      btn.className = 'answer-btn';
+      btn.textContent = answer;
+      btn.onclick = () => checkAnswer(index);
+      answersContainer.appendChild(btn);
+    });
+
+    updateProgress();
+  }
+
+  function checkAnswer(selectedIndex) {
+      if (answered) return;
+
+      answered = true;
+      const question = currentQuestions[currentQuestionIndex];
+      const answerButtons = document.querySelectorAll('.answer-btn');
+      const explanationContainer = document.getElementById('explanation-container');
+
+      answerButtons.forEach(btn => btn.disabled = true);
+
+      if (selectedIndex === question.correct) {
+          score++;
+          answerButtons[selectedIndex].classList.add('correct');
+      } else {
+          answerButtons[selectedIndex].classList.add('incorrect');
+          answerButtons[question.correct].classList.add('correct');
+      }
+
+      explanationContainer.innerHTML = `
+      <div class="explanation">
+        <strong>EXPLANATION:</strong> ${question.explanation}
+      </div>
+    `;
+
+      document.getElementById('next-btn').classList.remove('hidden');
+      updateProgress();
+  }
+
+  function updateProgress() {
+      document.getElementById('current-q').textContent = currentQuestionIndex + 1;
+      document.getElementById('score').textContent = score;
+      const percentage = ((score / (currentQuestionIndex + (answered ? 1 : 0))) * 100).toFixed(0);
+      document.getElementById('percentage').textContent = percentage + '%';
+  }
+
+  function nextQuestion() {
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex >= currentQuestions.length) {
+          showResults();
+      } else {
+          displayQuestion();
+      }
+  }
+
+  function showResults() {
+      const container = document.getElementById('question-container');
+      const resultContainer = document.getElementById('result-container');
+      const formContainer = document.getElementById('form-container');
+
+      container.classList.add('hidden');
+      document.getElementById('exam-progress').classList.add('hidden');
+      resultContainer.classList.remove('hidden');
+
+      const percentage = ((score / 30) * 100).toFixed(1);
+      const passed = score >= 27; // 90% of 30 is 27
+
+      resultContainer.innerHTML = `
+      <div class="result-screen ${passed ? 'pass' : 'fail'}">
+        <div class="result-status">${passed ? 'PASS' : 'FAIL'}</div>
+        <div class="result-score">${score} / 30 (${percentage}%)</div>
+        <div class="result-message">
+          ${passed
+              ? 'You have passed the Light Transport written examination. Complete the form below to schedule your in-game practical evaluation with a driver instructor.'
+              : 'You did not achieve the required 90% passing score. Review the material and retake the examination.'}
+        </div>
+        ${!passed ? '<button class="btn" onclick="location.reload()">RETAKE EXAM</button>' : ''}
+      </div>
+    `;
+
+      if (passed) {
+          formContainer.classList.remove('hidden');
+          formContainer.innerHTML = `
+        <div class="form-container">
+          <h2>POST-EXAM GROUND CERTIFICATION FORM</h2>
+          <p>Your written exam results will be forwarded to the ground instructor cadre. Complete this form to begin the practical scheduling process.</p>
+
+          <form id="cert-form">
+            <div class="form-group">
+              <label for="discord">DISCORD USERNAME *</label>
+              <input type="text" id="discord" required placeholder="username#0000">
+            </div>
+
+            <div class="form-group">
+              <label for="callsign">IN-GAME CALLSIGN *</label>
+              <input type="text" id="callsign" required placeholder="Your tactical callsign">
+            </div>
+
+            <div class="form-group">
+              <label for="availability">AVAILABILITY / TIMEZONE *</label>
+              <textarea id="availability" required placeholder="Preferred days/times and timezone (e.g., Weekends 1800-2200 UTC, Mon-Fri after 2000 EST)"></textarea>
+            </div>
+
+            <button type="submit" class="btn">SUBMIT GROUND CERTIFICATION REQUEST</button>
+          </form>
+
+          <div id="form-response" class="hidden"></div>
+        </div>
+      `;
+
+          document.getElementById('cert-form').addEventListener('submit', handleFormSubmit);
+      }
+  }
+
+  function handleFormSubmit(e) {
+      e.preventDefault();
+
+      // Secure, anonymous Cloudflare Driver Webhook proxy URL
+      const CLOUDFLARE_WORKER_URL = 'https://wardogs-driver-webhook.arsenalapi.workers.dev';
+
+      const formResponse = document.getElementById('form-response');
+      formResponse.classList.remove('hidden');
+      formResponse.innerHTML = `
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>TRANSMITTING TO GROUND INSTRUCTOR CADRE...</p>
+      </div>
+    `;
+
+      // Get form values
+      const discordUser = document.getElementById('discord').value;
+      const callsignUser = document.getElementById('callsign').value;
+      const availabilityUser = document.getElementById('availability').value;
+
+      // Detect which exam they completed based on page URL
+      let examType = 'Light Transport';
+      if (window.location.pathname.includes('heavy')) {
+        examType = 'Heavy Transport';
+      } else if (window.location.pathname.includes('weapon')) {
+        examType = 'Weaponized';
+      }
+      const percentage = ((score / 30) * 100).toFixed(1);
+
+      // Format a tactical Discord embed payload
+      const discordPayload = {
+          username: "Wardogs Ground Command",
+          embeds: [
+              {
+                  title: "🛞 NEW DRIVER LICENSING APPLICATION 🛞",
+                  description: "A candidate has successfully passed the written ground examination and is ready for a practical evaluation.",
+                  color: 16763904,
+                  fields: [
+                      {
+                          name: "👤 Candidate Details",
+                          value: `**Discord:** ${discordUser}\n**Callsign:** ${callsignUser}`,
+                          inline: false
+                      },
+                      {
+                          name: "🛞 Driver Track",
+                          value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 30 (${percentage}%)`,
+                          inline: false
+                      },
+                      {
+                          name: "📅 Availability & Timezone",
+                          value: availabilityUser,
+                          inline: false
+                      }
+                  ],
+                  footer: {
+                      text: "Wardogs Unofficial Ground Academy • Remember: Don't flip. Don't crash."
+                  },
+                  timestamp: new Date().toISOString()
+              }
+          ]
+      };
+
+      // Perform a standard POST request directly to your secure Cloudflare Worker
+      fetch(CLOUDFLARE_WORKER_URL, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(discordPayload)
+      })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Failed to transmit application to Cloudflare.');
+              }
+
+              // Show success message once the request is complete
+              formResponse.innerHTML = `
+        <div class="success-message">
+          <h3 style="color: var(--tactical-yellow); margin-bottom: 20px;">✓ TRANSMISSION SUCCESSFUL</h3>
+          <p>Your written driving exam results have been registered. Stand by for contact via Discord to schedule your in-game practical driving evaluation.</p>
+          <p style="margin-top: 20px; color: var(--tactical-red); font-weight: 700;">REMEMBER THE RULES:</p>
+          <p style="color: var(--tactical-red);">If you flip the vehicle, you fail.</p>
+          <p style="color: var(--tactical-red);">If you get stuck or run too slow, you fail.</p>
+          <p style="margin-top: 20px;">Precision maneuvering is mandatory. Good luck, driver.</p>
+        </div>
+      `;
+
+              document.getElementById('cert-form').style.display = 'none';
+          })
+          .catch(error => {
+              console.error('Error submitting application:', error);
+
+              formResponse.innerHTML = `
+        <div class="success-message" style="border-color: var(--tactical-red);">
+          <h3 style="color: var(--tactical-red); margin-bottom: 20px;">⚠️ TRANSMISSION ERROR</h3>
+          <p>There was a connection issue forwarding your application to ground command. Please take a screenshot of your passing score (${score}/30) and contact a driving instructor directly on Discord.</p>
+        </div>
+      `;
+          });
+  }
+
+  initExam();
+  </script>
+</body>
+</html>

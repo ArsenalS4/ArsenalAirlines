@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Driver Exam — Track 3: Weaponized | WARDOGS</title>
+  <meta name="description" content="Wardogs Weaponized Driver/Operator Examination — written test for Track 3 (Weaponized vehicles). 30 questions, 90% pass required.">
+  <link rel="canonical" href="https://wardogspilots.com/driver-exam-track3.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Driver Exam — Track 3: Weaponized" />
+  <meta property="og:description" content="Wardogs Weaponized Driver/Operator Examination — heavy armor and weaponized vehicle operations." />
+  <meta property="og:image" content="/WD_Screenshot_Littlebird_2.jpg" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <div class="disclaimer">
+    ⚠️ UNOFFICIAL WARDOGS PILOT LICENSING PORTAL - FAN CREATED ⚠️
+  </div>
+
+  <nav>
+    <div class="nav-container">
+      <img src="/WD_Fullmark_Full.png" alt="WARDOGS Logo" class="nav-logo">
+      <ul class="nav-links">
+        <li><a href="index.html">PILOTS</a></li>
+        <li><a href="requirements.html">PILOT REQUIREMENTS</a></li>
+        <li><a href="exam-littlebird.html">LITTLE BIRD</a></li>
+        <li><a href="exam-huey.html">HUEY</a></li>
+        <li><a href="drivers.html">DRIVERS</a></li>
+        <li><a href="driver-requirements.html">DRIVER REQUIREMENTS</a></li>
+        <li class="nav-dropdown">
+          <a href="#" aria-haspopup="true" aria-expanded="false">DRIVER EXAMS ▾</a>
+          <ul class="nav-dropdown-list">
+            <li><a href="driver-exam-track1.html">Track 1 — Small Transport</a></li>
+            <li><a href="driver-exam-track2.html">Track 2 — Heavy Transport</a></li>
+            <li><a href="driver-exam-track3.html" class="active">Track 3 — Weaponized</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero" role="banner">
+    <img src="/WD_Screenshot_Littlebird_2.jpg" alt="Weaponized driver exam hero image" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>DRIVER EXAM — TRACK 3</h1>
+      <p>WEAPONIZED / ARMORED PLATFORM OPERATIONS</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="exam-container">
+      <div class="exam-header">
+        <h1>WEAPONIZED VEHICLE EXAM</h1>
+        <p>WEAPONIZED DRIVER/OPERATOR TEST</p>
+      </div>
+
+      <div id="exam-progress" class="exam-progress">
+        <div class="progress-item">
+          <div class="progress-label">Question</div>
+          <div class="progress-value"><span id="current-q">1</span>/30</div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label">Correct</div>
+          <div class="progress-value" id="score">0</div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label">Progress</div>
+          <div class="progress-value" id="percentage">0%</div>
+        </div>
+      </div>
+
+      <div id="question-container"></div>
+      <div id="result-container" class="hidden"></div>
+      <div id="form-container" class="hidden"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-disclaimer">
+      ⚠️ UNOFFICIAL WARDOGS PILOT LICENSING PORTAL - FAN CREATED ⚠️
+    </div>
+    <div class="footer-info">
+      WARDOGS is a trademark of BULKHEAD. This portal is an unofficial fan project and is not affiliated with or endorsed by BULKHEAD.
+    </div>
+  </footer>
+
+  <script>
+  // ===================================================
+  // Wardogs Weaponized Driver/Operator Examination
+  // ===================================================
+
+  const QUESTION_POOL = [
+    {
+      question: "When engaging an enemy armored vehicle in a main battle tank, what is the optimal hull-angling technique to maximize your armor's effectiveness?",
+      answers: [
+        "Angle the front hull approximately 30 degrees away from the threat to maximize the line-of-sight thickness of your armor.",
+        "Point the side of the hull directly at the incoming fire to protect the thin front lower glacis plate from damage.",
+        "Angle the tank exactly 90 degrees to present the widest flat surface, dispersing the kinetic energy of AP rounds.",
+        "Keep the hull pointing straight forward with zero angle to ensure the direct frontal armor takes the impact."
+      ],
+      correct: 0,
+      explanation: "Angling the front hull of your tank relative to the incoming shot creates an oblique angle of impact. This dramatically increases the effective thickness of the armor plate that the enemy shell has to penetrate, and increases the likelihood of a richochet."
+    },
+    {
+      question: "What is the primary tactical advantage of positioning your armored combat vehicle in a 'hull-down' position behind a ridge?",
+      answers: [
+        "It conceals the thin hull of the vehicle, exposing only the heavily armored turret to incoming target threats.",
+        "It maximizes the horizontal speed of the vehicle, allowing for a rapid, flat-out escape from ground forces.",
+        "It increases the barrel elevation of self-propelled artillery, doubling the maximum effective range of shells.",
+        "It allows the engine cooling system to draw in fresh air directly, preventing a compressor thermal stall."
+      ],
+      correct: 0,
+      explanation: "Positioning your combat vehicle in a 'hull-down' position means the lower chassis/hull is completely protected behind terrain, exposing only your turret to threats. This makes you a much smaller target and utilizes your turret's thickest front armor."
+    },
+    {
+      question: "When aiming a mobile artillery vehicle or tank main gun over long distances, what is the primary factor to calculate?",
+      answers: [
+        "Gravity-induced shell drop, requiring the gunner to elevate the barrel above the target based on range.",
+        "The rotational speed of the earth, requiring the vehicle to face strictly east during maximum range fire.",
+        "The temperature of the hydraulic fluid in the turret, requiring the gun to fire only at minimum speeds.",
+        "The wind resistance on the vehicle's tracks, requiring the driver to park perpendicular to the headwind."
+      ],
+      correct: 0,
+      explanation: "At long range, gravity will pull the fired shell downward significantly throughout its trajectory. To hit the target, the gunner must calculate the range and elevate the gun barrel (holding high) to compensate for this vertical ballistic drop."
+    },
+    {
+      question: "In a tracked combat vehicle like a main battle tank, how is a 'pivot turn' (neutral steer) executed, and what is its primary hazard?",
+      answers: [
+        "Spinning the tracks in opposite directions; the primary hazard is throwing a track on rocky or soft terrain.",
+        "Locking one track and accelerating the other; the primary hazard is overheating the turbine cooling fans.",
+        "Disengaging both tracks and drifting using momentum; the primary hazard is rolling the vehicle over at high speed.",
+        "Shifting the transmission into reverse while in a turn; the primary hazard is shearing the main drive sprockets."
+      ],
+      correct: 0,
+      explanation: "A pivot turn spins the left and right tracks in completely opposite directions, turning the tank in place. Because this subjects the suspension to intense lateral force, doing this on jagged rocks, soft mud, or deep sand can pop the track off the wheels (throw a track)."
+    },
+    {
+      question: "When preparing a heavy self-propelled artillery vehicle to fire a high-caliber shell, the driver must first:",
+      answers: [
+        "Lower the hydraulic stabilizer spades into the ground to absorb the massive recoil and prevent chassis damage.",
+        "Turn off the engine completely to prevent the shockwave from damaging the alternator and drive belts.",
+        "Shift into the highest gear possible to allow the vehicle to roll backward smoothly with the weapon's kick.",
+        "Deflate all the tires on the left side of the vehicle to tilt the chassis and assist the gunner's elevation."
+      ],
+      correct: 0,
+      explanation: "High-caliber artillery creates massive, violent recoil forces upon firing. Drivers must drop hydraulic stabilizer spades (anchors) into the soil to ground the vehicle and absorb this force. Failing to do so will severely damage the suspension and compromise accuracy."
+    },
+    {
+      question: "During continuous firing of a mounted coaxial turret machine gun, how does the operator prevent barrel melt or warping?",
+      answers: [
+        "By firing in short, controlled bursts and allowing the air to cool the barrel between target engagements.",
+        "By cycling the main battery master switch off to reset the electrical solenoid cooling valves.",
+        "By pouring cold engine fuel directly down the barrel right after firing a long, continuous belt.",
+        "By keeping the weapon continuously fired to force hot gases to carry the heat out of the muzzle end."
+      ],
+      correct: 0,
+      explanation: "Rapid, continuous firing will quickly heat a gun barrel to red-hot temperatures, causing the metal to warp and ruin target accuracy (or melt). Operators must fire in bursts to let air cool the barrel and extend the service life of the weapon."
+    },
+    {
+      question: "When an incoming Anti-Tank Guided Missile (ATGM) warning is triggered, the combat vehicle driver should immediately:",
+      answers: [
+        "Deploy defensive smoke grenades, break the threat line-of-sight, and reposition behind solid cover.",
+        "Shift into neutral, apply full brakes, and brace for impact in the center of the armored compartment.",
+        "Accelerate straight forward toward the launch source to decrease the missile's tracking window.",
+        "Spin the vehicle in a neutral pivot turn to let the heavy rear engine block absorb the missile's strike."
+      ],
+      correct: 0,
+      explanation: "ATGMs rely on optical or laser tracking. Deploying your smoke screen blocks their thermal/visual tracking path and laser paint. The driver must immediately steer the vehicle behind a hill, building, or berm to avoid being hit."
+    },
+    {
+      question: "What is the function of a gyroscopic gun stabilizer system in a modern main battle tank?",
+      answers: [
+        "It maintains the gun's alignment on the target automatically while the vehicle is moving over rough ground.",
+        "It locks the turret in a forward position to prevent the barrel from swinging during high-speed travel.",
+        "It automatically adjusts the engine's RPM to match the rotational speed of the heavy turret platform.",
+        "It vents high-pressure hydraulic fluid to the main tracks to assist the driver during high-speed turns."
+      ],
+      correct: 0,
+      explanation: "A stabilizer system uses gyros to detect the tank's bumps, rolls, and pitches. It instantly sends signals to the turret servos to move the gun in the opposite direction, keeping the barrel pointed exactly at the target while driving off-road."
+    },
+    {
+      question: "Why must an armored vehicle driver always avoid presenting the side or rear of their vehicle to a known threat?",
+      answers: [
+        "Side and rear armor are significantly thinner than frontal armor, leaving the engine and ammo highly vulnerable.",
+        "The driver's visual sights are located on the sides, and hitting them will blind the operator completely.",
+        "The tracks will jam automatically if hit from the side, forcing the vehicle to pivot uncontrollably.",
+        "The main gun stabilization system will disengage if the vehicle takes an impact on its rear plate."
+      ],
+      correct: 0,
+      explanation: "Armored vehicles are designed to take a beating from the front, where the armor is thickest and sloped. The sides and rear contain thin armor plating to save weight. Direct hits there will easily penetrate the cabin, fuel tanks, engine block, or ammunition racks."
+    },
+    {
+      question: "When positioning an Infantry Fighting Vehicle (IFV) to offload troops in a combat zone, the driver should:",
+      answers: [
+        "Position the rear exit doors facing away from the enemy threat, using the armored chassis as a shield.",
+        "Park perpendicular to the enemy line to allow troops to climb out of both sides simultaneously.",
+        "Keep the vehicle moving at high speed during offloading to minimize the target profile for mortars.",
+        "Lower the front ramp directly toward the threat to let the troops charge straight into the enemy."
+      ],
+      correct: 0,
+      explanation: "When offloading troops, the vehicle must act as a physical shield. Positioning the rear exit doors away from the threat ensures soldiers can dismount and establish cover behind the thickest parts of the vehicle's armored frame."
+    },
+    {
+      question: "When driving a main battle tank through thick forest or tight urban ruins, what must the driver coordinate with the gunner?",
+      answers: [
+        "Gun barrel clearance, ensuring the long main gun barrel does not strike trees, walls, or solid obstacles.",
+        "Turret rotation speed, ensuring the heavy gears do not draw too much power from the steering pumps.",
+        "Track tension, ensuring the continuous steel treads do not slip off the drive sprockets on concrete.",
+        "Exhaust gas temperature, ensuring the turbine output does not heat up the rear radiator grill."
+      ],
+      correct: 0,
+      explanation: "A tank's main gun barrel is extremely long and extends far past the chassis. When steering around corners, tight streets, or trees, the driver must coordinate with the gunner so the barrel isn't slammed into walls or trees, which can bend the barrel or damage the turret gears."
+    },
+    {
+      question: "When operating a weaponized vehicle's main gun, which round type is optimal for destroying heavily fortified concrete bunkers?",
+      answers: [
+        "High-Explosive (HE) or High-Explosive Anti-Tank (HEAT) rounds, which utilize raw blast force and explosive energy.",
+        "Armor-Piercing Fin-Stabilized Discarding Sabot (APFSDS) rounds, which rely solely on kinetic kinetic energy.",
+        "Coaxial light machine gun rounds, which rely on high volumes of fire to degrade the structural steel.",
+        "Standard smoke canisters, which fill the interior of the structure with dense, un-breathable compounds."
+      ],
+      correct: 0,
+      explanation: "HEAT and HE rounds are designed to detonate on contact, transmitting a massive shockwave and blast force directly into structural walls to shatter concrete (spalling) and collapse bunkers. Sabot/AP rounds are designed to pierce dense metal, not collapse structures."
+    },
+    {
+      question: "Why is self-propelled artillery highly vulnerable to counter-battery fire, and how do drivers mitigate this?",
+      answers: [
+        "Enemy radar can track the trajectory of fired shells; drivers must fire a volley and immediately reposition (shoot and scoot).",
+        "The heavy gun barrel blocks the driver's front view; drivers must only navigate using rear-view mirrors.",
+        "The high heat of firing reveals the vehicle's thermal signature; drivers must pour water on the engine.",
+        "The blast waves degrade the communication radios; drivers must rely strictly on physical hand flags."
+      ],
+      correct: 0,
+      explanation: "Modern military radar can trace the path of incoming artillery shells back to their exact origin point in seconds. To avoid receiving return fire (counter-battery), artillery drivers must execute 'shoot and scoot'—firing their rounds and moving immediately."
+    },
+    {
+      question: "What is the primary operational consequence of driving an armored combat vehicle with loose track tension?",
+      answers: [
+        "The tracks can slip off the wheels (throw a track) during sharp turns, leaving the vehicle completely disabled.",
+        "The engine's top speed is reduced by half because of excess friction on the upper support rollers.",
+        "The main gun stabilizer system loses calibration due to the excess vibration of the loose metal.",
+        "The hydraulic fluid in the steering clutches will overheat, causing a complete system lockup."
+      ],
+      correct: 0,
+      explanation: "Continuous steel tracks must be kept at a specific tension. If too loose, the track links can slide sideways off the road wheels or drive sprockets during a turn. This 'throws a track' and leaves the vehicle completely stranded and unable to move."
+    },
+    {
+      question: "When firing a heavy .50 caliber machine gun mounted on a light transport vehicle, the gunner should:",
+      answers: [
+        "Fire in brief, controlled bursts to maintain target accuracy and prevent the vehicle's suspension from rocking.",
+        "Hold the trigger down continuously until the ammo box is empty to maximize the suppression coverage.",
+        "Instruct the driver to slam on the brakes right before firing to lock the vehicle's suspension solid.",
+        "Elevate the gun barrel to maximum angle to let gravity assist the trajectory of the heavy rounds."
+      ],
+      correct: 0,
+      explanation: "Heavy machine guns create severe recoil force. On a light transport vehicle, continuous fire will shake the light suspension, throwing off your aim. Burst fire stabilizes your platform, saves ammo, and preserves accuracy."
+    },
+    {
+      question: "When driving an armored vehicle equipped with a heavy mine plow or roller through a suspected minefield:",
+      answers: [
+        "Maintain a slow, steady speed in a straight line to allow the plow to detonate or push mines aside safely.",
+        "Drive at maximum speed and zig-zag rapidly to minimize the time any single wheel spends over a mine.",
+        "Turn off the main stabilization systems to prevent the electrical currents from triggering magnetic fuses.",
+        "Drive strictly in reverse to let the heavy engine block absorb any potential mine blasts under the chassis."
+      ],
+      correct: 0,
+      explanation: "Clearing mines requires steady pressure and mechanical alignment. Driving too fast will cause the plow/roller to bounce over terrain, missing buried mines. You must maintain a slow, steady pace to ensure total soil coverage."
+    },
+    {
+      question: "What is the primary tactical role of the coaxial machine gun on a main battle tank or infantry fighting vehicle?",
+      answers: [
+        "To engage infantry and unarmored targets quickly without wasting high-caliber main gun ammunition.",
+        "To provide defensive anti-aircraft fire against high-speed fighter jets and attack helicopters.",
+        "To mark the path for trailing light transport vehicles during night convoy operations.",
+        "To clear thick brush and trees in front of the vehicle to improve the driver's line of sight."
+      ],
+      correct: 0,
+      explanation: "The coaxial machine gun is mounted parallel to your main gun. It allows the gunner to quickly target infantry, soft targets, or light obstacles without wasting precious, heavy main gun shells that are reserved for armored threats."
+    },
+    {
+      question: "How does a main battle tank's engine smoke generator (VEESS) create a smoke screen, and what is its limitation?",
+      answers: [
+        "It injects raw fuel directly into the hot exhaust manifold; it cannot be used if the engine is cold or shut down.",
+        "It burns high-explosive smoke canisters inside the main engine blocks; it can only be used twice per run.",
+        "It vents high-pressure coolant fluid over the hot radiator cores; it risks overheating the engine quickly.",
+        "It blocks the air intake filters temporarily to create black soot; it causes the turbine to stall if held too long."
+      ],
+      correct: 0,
+      explanation: "VEESS works by spraying raw fuel directly into the super-hot exhaust pipes, vaporizing it into a thick cloud of white smoke. Because it relies on extreme exhaust heat, it will not work if the vehicle's engine is cold or idling."
+    },
+    {
+      question: "When climbing over a steep crest in view of enemy forces, why is an armored combat vehicle highly vulnerable?",
+      answers: [
+        "The climb exposes the thin lower glacis plate (underbelly armor) to direct, un-angled enemy anti-tank fire.",
+        "The steep angle forces the main engine's transmission fluid to leak out of the rear ventilation vents.",
+        "The main gun cannot be depressed low enough to target threats directly in front of the climb.",
+        "The tracking system loses lock on the horizon, disabling the automatic turret stabilization."
+      ],
+      correct: 0,
+      explanation: "As your vehicle noses up over a ridge, your front underbelly (lower glacis plate) is exposed to the enemy. This plate contains the thinnest frontal armor and is completely flat relative to their line of sight, making it easy to penetrate."
+    },
+    {
+      question: "What is the maximum safe water depth (fording depth) for a standard weaponized combat vehicle without a snorkel?",
+      answers: [
+        "Up to the level of the engine air intake; exceeding this risks immediate engine hydrolock and electrical failure.",
+        "Up to the top of the main turret roof plate; the hatches must be sealed airtight before crossing.",
+        "Exactly half the height of the continuous steel tracks; any deeper will cause the tracks to slip.",
+        "Unlimited; all modern armored combat vehicles are inherently amphibious and can float on deep water."
+      ],
+      correct: 0,
+      explanation: "Tanks are extremely heavy and do not float. Without a specialized deep-fording snorkel, they must drive along the riverbed. Water must never rise above the engine intake, otherwise, water will enter the engine and destroy it (hydrolock)."
+    },
+    {
+      question: "During a combat engagement, why must the driver inform the gunner before executing a sudden, sharp turn?",
+      answers: [
+        "Sudden turns can swing the turret rapidly, disorienting the gunner or throwing off their target tracking lock.",
+        "The driver's steering inputs draw hydraulic power directly away from the turret's elevation pistons.",
+        "The sudden lateral forces will cause the loaded main gun shell to slide out of the breech assembly.",
+        "The turn will disengage the coaxial machine gun's electronic ammunition feeding trays automatically."
+      ],
+      correct: 0,
+      explanation: "While modern stabilized turrets will try to stay aligned on target, sudden chassis rotations force the turret gears to rotate violently to compensate. This rapid movement can blind, disorient, or slam the gunner against the interior."
+    },
+    {
+      question: "When driving a heavy tracked vehicle over a wide trench or anti-tank ditch, the correct technique is:",
+      answers: [
+        "Approach perpendicular to the trench at a slow, steady speed to prevent the nose from diving.",
+        "Approach at an angle at maximum speed to let the front of the vehicle jump over the gap.",
+        "Slam on the brakes right before the edge to let the track suspension absorb the shock of landing.",
+        "Spin the vehicle in a neutral pivot turn right at the edge to cross the trench backward."
+      ],
+      correct: 0,
+      explanation: "Approaching straight on (perpendicularly) ensures both tracks cross the gap at the same time. This keeps the vehicle level and prevents it from dipping a single track into the ditch, which would cause the vehicle to flip or get stuck."
+    },
+    {
+      question: "How does carrying a full load of heavy main gun ammunition affect the driving characteristics of a tank?",
+      answers: [
+        "It significantly increases overall gross weight, lengthening braking distances and reducing acceleration.",
+        "It improves high-speed handling by keeping the vehicle's suspension locked solid against bumps.",
+        "It has no effect on driving characteristics because the ammunition is stored in armored blow-out bays.",
+        "It increases the vehicle's maximum speed by forcing the driver to use a higher engine torque range."
+      ],
+      correct: 0,
+      explanation: "A full load of tank ammo can weigh several tons on its own. Adding this weight to the vehicle increases its rolling mass, which slows down your acceleration, increases your braking distance, and requires more torque on slopes."
+    },
+    {
+      question: "What is the function of Explosive Reactive Armor (ERA) tiles mounted on the hull of a main battle tank?",
+      answers: [
+        "They detonate outward upon impact, disrupting and neutralizing the penetrating jet of incoming shaped-charge rounds.",
+        "They absorb the kinetic energy of AP rounds by melting into a thick protective gel coating.",
+        "They explode automatically when the tank gets stuck, destroying nearby obstacles to clear a path.",
+        "They generate a localized electromagnetic field that deflects incoming high-speed metal fragments."
+      ],
+      correct: 0,
+      explanation: "ERA tiles contain a layer of high explosive sandwiched between steel plates. When hit by a shaped-charge missile (like an RPG), the tile detonates outward. This blast disrupts the focused jet of molten copper, preventing it from piercing the hull."
+    },
+    {
+      question: "To hit a target behind a high mountain ridge using a mobile artillery vehicle, the gunner must use:",
+      answers: [
+        "High-angle fire (high trajectory), elevating the main barrel significantly to let the shell lob over the obstacle.",
+        "Low-angle fire (flat trajectory), using maximum velocity to blast the shell directly through the ridge.",
+        "Coaxial machine gun bursts to verify the path of the wind over the peak before firing.",
+        "Standard armor-piercing rounds, which rely on kinetic force to break through the mountain peak."
+      ],
+      correct: 0,
+      explanation: "Artillery is designed for indirect fire. To hit a target hidden behind vertical obstacles like ridges or buildings, the barrel must be elevated high so the shell rises over the obstruction and plunges down onto the target on the other side."
+    },
+    {
+      question: "When operating a heavy vehicle with an electric-powered turret, what happens if the main generator fails?",
+      answers: [
+        "The turret can only be rotated manually using mechanical hand cranks, which is significantly slower.",
+        "The turret locks in its current position permanently, making it completely impossible to aim.",
+        "The main gun will fire automatically at random intervals due to a loss of electrical safety locks.",
+        "The turret will spin uncontrollably to the left due to a sudden drop in hydraulic backpressure."
+      ],
+      correct: 0,
+      explanation: "Turrets are extremely heavy. Without generator power to drive the electric rotation motors, the crew must switch to manual backup gears. These require physically cranking mechanical handwheels, which is extremely slow and tiring."
+    },
+    {
+      question: "Why do heavy tracked combat vehicles maintain exceptional mobility on soft surfaces like deep mud or snow?",
+      answers: [
+        "The continuous wide tracks distribute the massive weight over a large area, lowering ground pressure.",
+        "The high-speed drive sprockets heat the steel tracks, melting mud and snow before they pack inside.",
+        "The suspension is completely rigid, keeping the vehicle's hull lifted high above the soft ground.",
+        "The tracks are coated in non-stick chemical compounds that prevent dirt from clinging to the steel."
+      ],
+      correct: 0,
+      explanation: "A tank is incredibly heavy, but its continuous tracks have a massive surface area. This spreads the weight of the vehicle out, resulting in very low ground pressure (often less than a human footprint), keeping the vehicle from sinking."
+    },
+    {
+      question: "If your vehicle's Laser Warning Receiver (LWR) alerts you to a laser designator paint, what is the threat?",
+      answers: [
+        "An enemy vehicle or infantry team is painting you with a laser to guide a missile or precision shell.",
+        "Your main gun stabilizer has lost calibration and is emitting high-power laser radiation internally.",
+        "An allied pilot is trying to scan your vehicle's identification codes to verify you are friendly.",
+        "Your engine's exhaust system has exceeded thermal limits and is emitting high-temperature light waves."
+      ],
+      correct: 0,
+      explanation: "Laser Warning Receivers detect the laser light emitted by enemy rangefinders or missile designators. If the alarm sounds, it means an enemy unit is locking onto you to guide a laser-homing missile or precision artillery shell."
+    },
+    {
+      question: "If the coaxial machine gun jams during an intense firefight, the first action of the gunner/operator is to:",
+      answers: [
+        "Perform immediate action (clear the bolt, check feed tray, reload) while keeping the weapon pointed downrange.",
+        "Exit the turret immediately to inspect the weapon from the outside of the armored vehicle's hull.",
+        "Fire the main gun directly at the ground in front of the vehicle to use the shockwave to clear the jam.",
+        "Instruct the driver to spin the vehicle rapidly in a pivot turn to fling the jammed casing out."
+      ],
+      correct: 0,
+      explanation: "Jams are standard combat challenges. The operator must perform immediate action (tap, rack, clear, or cycle the bolt) from inside the turret while maintaining the weapon's barrel pointed downrange, away from friendly forces."
+    },
+    {
+      question: "Why must a combat vehicle operator ensure the main battery master switch is turned OFF after parking?",
+      answers: [
+        "To prevent parasitic electrical drain from turrets, radios, and sights from completely draining the batteries.",
+        "To prevent the high-explosive main gun rounds from detonating due to static electricity buildup.",
+        "To ensure the continuous steel tracks do not acquire a permanent magnetic charge from ground currents.",
+        "To allow the engine's mechanical cooling pumps to drain water from the compressor stages safely."
+      ],
+      correct: 0,
+      explanation: "Armored combat vehicles are packed with advanced electronics, thermal sights, turret motors, and radios. If left parked with the battery master switch on, these systems will slowly drain the massive batteries, leaving you with a dead engine next start."
+    }
+  ];
+
+  let currentQuestions = [];
+  let currentQuestionIndex = 0;
+  let score = 0;
+  let answered = false;
+
+  function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  function initExam() {
+    currentQuestions = shuffleArray(QUESTION_POOL).slice(0, 30);
+    
+    // Shuffle answers for each question
+    currentQuestions.forEach(q => {
+      const correctAnswer = q.answers[q.correct];
+      const shuffled = shuffleArray(q.answers.map((ans, idx) => ({ ans, idx })));
+      q.answers = shuffled.map(item => item.ans);
+      q.correct = shuffled.findIndex(item => item.idx === q.correct);
+    });
+    
+    currentQuestionIndex = 0;
+    score = 0;
+    answered = false;
+    displayQuestion();
+  }
+
+  function displayQuestion() {
+    const container = document.getElementById('question-container');
+    const question = currentQuestions[currentQuestionIndex];
+    
+    answered = false;
+    
+    container.innerHTML = `
+      <div class="question-card">
+        <div class="question-number">Question ${currentQuestionIndex + 1} of 30</div>
+        <div class="question-text">${question.question}</div>
+        <div class="answers" id="answers"></div>
+        <div id="explanation-container"></div>
+        <button class="btn next-btn hidden" id="next-btn" onclick="nextQuestion()">NEXT QUESTION</button>
+      </div>
+    `;
+    
+    const answersContainer = document.getElementById('answers');
+    question.answers.forEach((answer, index) => {
+      const btn = document.createElement('button');
+      btn.className = 'answer-btn';
+      btn.textContent = answer;
+      btn.onclick = () => checkAnswer(index);
+      answersContainer.appendChild(btn);
+    });
+    
+    updateProgress();
+  }
+
+  function checkAnswer(selectedIndex) {
+      if (answered) return;
+
+      answered = true;
+      const question = currentQuestions[currentQuestionIndex];
+      const answerButtons = document.querySelectorAll('.answer-btn');
+      const explanationContainer = document.getElementById('explanation-container');
+
+      answerButtons.forEach(btn => btn.disabled = true);
+
+      if (selectedIndex === question.correct) {
+          score++;
+          answerButtons[selectedIndex].classList.add('correct');
+      } else {
+          answerButtons[selectedIndex].classList.add('incorrect');
+          answerButtons[question.correct].classList.add('correct');
+      }
+
+      explanationContainer.innerHTML = `
+      <div class="explanation">
+        <strong>EXPLANATION:</strong> ${question.explanation}
+      </div>
+    `;
+
+      document.getElementById('next-btn').classList.remove('hidden');
+      updateProgress();
+  }
+
+  function updateProgress() {
+      document.getElementById('current-q').textContent = currentQuestionIndex + 1;
+      document.getElementById('score').textContent = score;
+      const percentage = ((score / (currentQuestionIndex + (answered ? 1 : 0))) * 100).toFixed(0);
+      document.getElementById('percentage').textContent = percentage + '%';
+  }
+
+  function nextQuestion() {
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex >= currentQuestions.length) {
+          showResults();
+      } else {
+          displayQuestion();
+      }
+  }
+
+  function showResults() {
+      const container = document.getElementById('question-container');
+      const resultContainer = document.getElementById('result-container');
+      const formContainer = document.getElementById('form-container');
+
+      container.classList.add('hidden');
+      document.getElementById('exam-progress').classList.add('hidden');
+      resultContainer.classList.remove('hidden');
+
+      const percentage = ((score / 30) * 100).toFixed(1);
+      const passed = score >= 27; // 90% of 30 is 27
+
+      resultContainer.innerHTML = `
+      <div class="result-screen ${passed ? 'pass' : 'fail'}">
+        <div class="result-status">${passed ? 'PASS' : 'FAIL'}</div>
+        <div class="result-score">${score} / 30 (${percentage}%)</div>
+        <div class="result-message">
+          ${passed
+              ? 'You have passed the Weaponized written examination. Complete the form below to schedule your in-game practical evaluation with a driver instructor.'
+              : 'You did not achieve the required 90% passing score. Review the material and retake the examination.'}
+        </div>
+        ${!passed ? '<button class="btn" onclick="location.reload()">RETAKE EXAM</button>' : ''}
+      </div>
+    `;
+
+      if (passed) {
+          formContainer.classList.remove('hidden');
+          formContainer.innerHTML = `
+        <div class="form-container">
+          <h2>POST-EXAM GROUND CERTIFICATION FORM</h2>
+          <p>Your written exam results will be forwarded to the ground instructor cadre. Complete this form to begin the practical scheduling process.</p>
+          
+          <form id="cert-form">
+            <div class="form-group">
+              <label for="discord">DISCORD USERNAME *</label>
+              <input type="text" id="discord" required placeholder="username#0000">
+            </div>
+            
+            <div class="form-group">
+              <label for="callsign">IN-GAME CALLSIGN *</label>
+              <input type="text" id="callsign" required placeholder="Your tactical callsign">
+            </div>
+            
+            <div class="form-group">
+              <label for="availability">AVAILABILITY / TIMEZONE *</label>
+              <textarea id="availability" required placeholder="Preferred days/times and timezone (e.g., Weekends 1800-2200 UTC, Mon-Fri after 2000 EST)"></textarea>
+            </div>
+            
+            <button type="submit" class="btn">SUBMIT GROUND CERTIFICATION REQUEST</button>
+          </form>
+          
+          <div id="form-response" class="hidden"></div>
+        </div>
+      `;
+
+          document.getElementById('cert-form').addEventListener('submit', handleFormSubmit);
+      }
+  }
+
+  function handleFormSubmit(e) {
+      e.preventDefault();
+
+      // Secure, anonymous Cloudflare Driver Webhook proxy URL
+      const CLOUDFLARE_WORKER_URL = 'https://wardogs-driver-webhook.arsenalapi.workers.dev';
+
+      const formResponse = document.getElementById('form-response');
+      formResponse.classList.remove('hidden');
+      formResponse.innerHTML = `
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>TRANSMITTING TO GROUND INSTRUCTOR CADRE...</p>
+      </div>
+    `;
+
+      // Get form values
+      const discordUser = document.getElementById('discord').value;
+      const callsignUser = document.getElementById('callsign').value;
+      const availabilityUser = document.getElementById('availability').value;
+
+      // Detect which exam they completed based on page URL
+      let examType = 'Weaponized';
+      const percentage = ((score / 30) * 100).toFixed(1);
+
+      // Format a tactical Discord embed payload
+      const discordPayload = {
+          username: "Wardogs Ground Command",
+          embeds: [
+              {
+                  title: "🛞 NEW DRIVER LICENSING APPLICATION 🛞",
+                  description: "A candidate has successfully passed the written ground examination and is ready for a practical evaluation.",
+                  color: 16763904, // Tactical Amber/Yellow in decimal
+                  fields: [
+                      {
+                          name: "👤 Candidate Details",
+                          value: `**Discord:** ${discordUser}\n**Callsign:** ${callsignUser}`,
+                          inline: false
+                      },
+                      {
+                          name: "🛞 Driver Track",
+                          value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 30 (${percentage}%)`,
+                          inline: false
+                      },
+                      {
+                          name: "📅 Availability & Timezone",
+                          value: availabilityUser,
+                          inline: false
+                      }
+                  ],
+                  footer: {
+                      text: "Wardogs Unofficial Ground Academy • Remember: Don't flip. Don't crash."
+                  },
+                  timestamp: new Date().toISOString()
+              }
+          ]
+      };
+
+      // Perform a standard POST request directly to your secure Cloudflare Worker
+      fetch(CLOUDFLARE_WORKER_URL, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(discordPayload)
+      })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Failed to transmit application to Cloudflare.');
+              }
+
+              // Show success message once the request is complete
+              formResponse.innerHTML = `
+        <div class="success-message">
+          <h3 style="color: var(--tactical-yellow); margin-bottom: 20px;">✓ TRANSMISSION SUCCESSFUL</h3>
+          <p>Your written driving exam results have been registered. Stand by for contact via Discord to schedule your in-game practical driving evaluation.</p>
+          <p style="margin-top: 20px; color: var(--tactical-red); font-weight: 700;">REMEMBER THE RULES:</p>
+          <p style="color: var(--tactical-red);">If you flip the vehicle, you fail.</p>
+          <p style="color: var(--tactical-red);">If you get stuck or run too slow, you fail.</p>
+          <p style="margin-top: 20px;">Precision maneuvering is mandatory. Good luck, driver.</p>
+        </div>
+      `;
+
+              document.getElementById('cert-form').style.display = 'none';
+          })
+          .catch(error => {
+              console.error('Error submitting application:', error);
+
+              formResponse.innerHTML = `
+        <div class="success-message" style="border-color: var(--tactical-red);">
+          <h3 style="color: var(--tactical-red); margin-bottom: 20px;">⚠️ TRANSMISSION ERROR</h3>
+          <p>There was a connection issue forwarding your application to ground command. Please take a screenshot of your passing score (${score}/30) and contact a driving instructor directly on Discord.</p>
+        </div>
+      `;
+          });
+  }
+
+  initExam();
+  </script>
+</body>
+</html>
