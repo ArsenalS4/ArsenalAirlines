@@ -79,6 +79,10 @@
       <p>All approved pilots authorized for rotary-wing operations in WARDOGS combat zones. Licenses issued after successful completion of written examination (90% minimum) and in-game practical evaluation.</p>
       <p class="roster-note">Tip: Click a callsign in the roster to view that pilot's detailed stats.</p>
       
+      <div class="roster-search-container">
+        <input type="text" id="roster-search" placeholder="Search by callsign, license, or instructor..." class="roster-search-input">
+      </div>
+      
       <div class="table-wrapper">
         <table class="roster-table">
           <thead>
@@ -242,6 +246,28 @@
         if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
           closePilotStats();
         }
+      });
+
+      // Roster search functionality
+      const searchInput = document.getElementById('roster-search');
+      const rosterRows = document.querySelectorAll('.roster-table tbody tr');
+
+      searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        
+        rosterRows.forEach(row => {
+          const callsign = row.cells[0].textContent.toLowerCase();
+          const license = row.cells[1].textContent.toLowerCase();
+          const instructor = row.cells[2].textContent.toLowerCase();
+          const date = row.cells[3].textContent.toLowerCase();
+          
+          const matches = callsign.includes(searchTerm) || 
+                         license.includes(searchTerm) || 
+                         instructor.includes(searchTerm) || 
+                         date.includes(searchTerm);
+          
+          row.style.display = matches ? '' : 'none';
+        });
       });
     })();
   </script>
