@@ -1,7 +1,9 @@
 // ==========================================
 // Bell UH-1H Advanced Flight Examination
 // ==========================================
-// If you're reading this code, go study chump
+// If you're reading this code instead of studying, you're gonna fail
+// These are actual turbine questions, not some bullshit trivia
+// Good fucking luck memorizing the T53-L-13 limitations, nerds
 
 const QUESTION_POOL = [
   {
@@ -710,7 +712,8 @@ const QUESTION_POOL = [
   }
 ];
 
-// Fisher-Yates shuffle because I'm not a barbarian
+// Fisher-Yates shuffle because I actually know what the fuck I'm doing
+// Unlike whoever taught you to fly, apparently
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -728,9 +731,9 @@ function initExam() {
   score = 0;
   currentQuestionIndex = 0;
   
-  // Randomize questions so you can't just memorize the order
+  // Randomize questions so you can't just memorize the order like a cheating bastard
   const shuffledPool = shuffleArray([...QUESTION_POOL]);
-  currentQuestions = shuffledPool.slice(0, 30);
+  currentQuestions = shuffledPool.slice(0, 6);
   
   displayQuestion();
 }
@@ -739,7 +742,8 @@ function displayQuestion() {
   answered = false;
   const question = currentQuestions[currentQuestionIndex];
   
-  // Shuffle the answers too because we're not idiots
+  // Shuffle the answers too because we're not complete fucking idiots
+  // Unlike you if you thought the answers were in order
   const correctText = question.answers[question.correct];
   const shuffledAnswers = shuffleArray([...question.answers]);
   const newCorrectIndex = shuffledAnswers.indexOf(correctText);
@@ -750,7 +754,7 @@ function displayQuestion() {
   const container = document.getElementById('question-container');
   container.innerHTML = `
     <div class="question-card">
-      <div class="question-number">Question ${currentQuestionIndex + 1} of 30</div>
+      <div class="question-number">Question ${currentQuestionIndex + 1} of 6</div>
       <div class="question-text">${question.question}</div>
       <div class="answers" id="answers"></div>
       <div id="explanation-container"></div>
@@ -771,14 +775,14 @@ function displayQuestion() {
 }
 
 function checkAnswer(selectedIndex) {
-  if (answered) return; // Why the fuck are you clicking twice
+  if (answered) return; // Why the fuck are you clicking twice? Reading comprehension much?
   
   answered = true;
   const question = currentQuestions[currentQuestionIndex];
   const answerButtons = document.querySelectorAll('.answer-btn');
   const explanationContainer = document.getElementById('explanation-container');
   
-  // Disable all buttons so people stop clicking
+  // Disable all buttons so people stop spam-clicking like it's gonna change the answer
   answerButtons.forEach(btn => btn.disabled = true);
   
   if (selectedIndex === question.tempCorrect) {
@@ -799,7 +803,7 @@ function checkAnswer(selectedIndex) {
   updateProgress();
 }
 
-// Keep track of how badly you're doing
+// Keep track of how badly you're doing (spoiler: probably pretty fucking badly)
 function updateProgress() {
   document.getElementById('current-q').textContent = currentQuestionIndex + 1;
   document.getElementById('score').textContent = score;
@@ -826,13 +830,13 @@ function showResults() {
   document.getElementById('exam-progress').classList.add('hidden');
   resultContainer.classList.remove('hidden');
   
-  const percentage = ((score / 30) * 100).toFixed(1);
-  const passed = score >= 27;
+  const percentage = ((score / 6) * 100).toFixed(1);
+  const passed = score >= 6;
   
   resultContainer.innerHTML = `
     <div class="result-screen ${passed ? 'pass' : 'fail'}">
       <div class="result-status">${passed ? 'PASS' : 'FAIL'}</div>
-      <div class="result-score">${score} / 30 (${percentage}%)</div>
+      <div class="result-score">${score} / 6 (${percentage}%)</div>
       <div class="result-message">
         ${passed 
           ? 'You have passed the UH-1H Huey written examination. Complete the form below to transmit your scores and schedule your practical check-ride.'
@@ -896,7 +900,7 @@ function handleFormSubmit(e) {
   const availabilityUser = document.getElementById('availability').value;
   
   const examType = 'UH-1H Huey';
-  const percentage = ((score / 30) * 100).toFixed(1);
+  const percentage = ((score / 6) * 100).toFixed(1);
 
   const discordPayload = {
     username: "Wardogs Flight Command",
@@ -913,7 +917,7 @@ function handleFormSubmit(e) {
           },
           {
             name: "🛸 Exam Performance",
-            value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 30 (${percentage}%)`,
+            value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 6 (${percentage}%)`,
             inline: false
           },
           {
@@ -960,7 +964,7 @@ function handleFormSubmit(e) {
     formResponse.innerHTML = `
       <div class="success-message" style="border-color: var(--tactical-red);">
         <h3 style="color: var(--tactical-red); margin-bottom: 20px;">⚠️ TRANSMISSION ERROR</h3>
-        <p>There was a connection issue forwarding your application to our database. Please take a screenshot of your passing score (${score}/30) and contact an instructor directly on Discord.</p>
+        <p>There was a connection issue forwarding your application to our database. Please take a screenshot of your passing score (${score}/6) and contact an instructor directly on Discord.</p>
       </div>
     `;
   });

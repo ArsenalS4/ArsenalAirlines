@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WARDOGS Driver Roster - Vehicle Licensing Portal</title>
-  <meta name="description" content="Unofficial WARDOGS driver roster and driver stats - Master Driver license holders and certification details.">
+  <title>WARDOGS Driver License - Vehicle Operator Certification Portal (Armor, Transport, Weaponized)</title>
+  <meta name="description" content="Official WARDOGS ground vehicle driver licensing portal. View certified drivers with stats, survival rates, and trip records. Get licensed for small transport, heavy logistics, or weaponized armor operations. Free driver certification exams.">
+  <meta name="keywords" content="WARDOGS driver license, vehicle certification, ground operator license, armor driver exam, transport vehicle certification, weaponized vehicle license, tactical driver training, BULKHEAD WARDOGS, driver roster, vehicle operator exam, tank driver license, APC certification, convoy operations">
   <link rel="canonical" href="https://wardogspilots.com/drivers.html">
   <link rel="stylesheet" href="shared.css">
 </head>
@@ -75,7 +76,7 @@
             </tr>
             <tr>
               <td>
-                <button class="pilot-link driver-link" data-driver="NINTYDEMONS">NINTYDEMONS</button>
+                <button class="pilot-link driver-link" data-driver="NINETYDEMONZ">NinetyDemonz</button>
               </td>
               <td><span class="license-badge">TRIPLE LICENSED (SMALL, HEAVY, WEAPONIZED)</span></td>
               <td>ADMIN</td>
@@ -150,12 +151,12 @@
           casualties: 3,
           averageTripsPerLife: 16
         },
-        NINTYDEMONS: {
-          callsign: 'NINTYDEMONS',
-          survivalRate: 97,
-          successfulTrips: 102,
-          casualties: 1,
-          averageTripsPerLife: 4
+        NINETYDEMONZ: {
+          callsign: 'NinetyDemonz',
+          // updated stats per request
+          successfulTrips: 50,
+          casualties: 5,
+          averageTripsPerLife: 3
         }
       };
 
@@ -188,11 +189,19 @@
         const data = driverData[id];
         if (!data) return;
 
+        // compute survival rate automatically from stats when possible
+        let computedRate = 0;
+        if (typeof data.successfulTrips === 'number' && data.successfulTrips > 0) {
+          // survival = (successfulTrips - casualties) / successfulTrips * 100
+          const survivors = Math.max(0, (data.successfulTrips - (data.casualties || 0)));
+          computedRate = (survivors / data.successfulTrips) * 100;
+        }
+
         callsignEl.textContent = data.callsign;
-        successEl.textContent = data.successfulTrips;
-        casualtiesEl.textContent = data.casualties;
-        averageEl.textContent = data.averageTripsPerLife;
-        setSurvival(data.survivalRate);
+        successEl.textContent = data.successfulTrips ?? 0;
+        casualtiesEl.textContent = data.casualties ?? 0;
+        averageEl.textContent = data.averageTripsPerLife ?? 0;
+        setSurvival(computedRate);
 
         modal.classList.remove('hidden');
         modal.setAttribute('aria-hidden', 'false');

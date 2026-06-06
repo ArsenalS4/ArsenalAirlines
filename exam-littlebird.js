@@ -1,4 +1,6 @@
 // Why the fuck are you here reading the source code? Go study.
+// Seriously, if you're looking for answers in here, you're gonna fail the practical anyway
+// These questions are pulled straight from FAA rotary-wing shit, good luck memorizing 150+ of them
 const QUESTION_POOL = [
   {
     question: "During a high-speed low-level pass in a Little Bird, what is the primary aerodynamic concern?",
@@ -746,7 +748,8 @@ let currentQuestionIndex = 0;
 let score = 0;
 let answered = false;
 
-// Standard shuffle algorithm, nothing fancy
+// Fisher-Yates shuffle because I'm not a goddamn amateur
+// This ensures you can't just memorize question order like some kind of cheat
 function shuffleArray(array) {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -757,10 +760,10 @@ function shuffleArray(array) {
 }
 
 function initExam() {
-  // Pick 30 random questions from the pool
-  currentQuestions = shuffleArray(QUESTION_POOL).slice(0, 30);
+  // Pick 6 random questions from the pool (reduced from 30 because apparently people can't focus)
+  currentQuestions = shuffleArray(QUESTION_POOL).slice(0, 6);
   
-  // Shuffle answers for each question so you can't just memorize patterns
+  // Shuffle answers for each question so you can't just memorize "always pick C" like a dumbass
   currentQuestions.forEach(q => {
     const correctAnswer = q.answers[q.correct];
     const shuffled = shuffleArray(q.answers.map((ans, idx) => ({ ans, idx })));
@@ -782,7 +785,7 @@ function displayQuestion() {
   
   container.innerHTML = `
     <div class="question-card">
-      <div class="question-number">Question ${currentQuestionIndex + 1} of 30</div>
+      <div class="question-number">Question ${currentQuestionIndex + 1} of 6</div>
       <div class="question-text">${question.question}</div>
       <div class="answers" id="answers"></div>
       <div id="explanation-container"></div>
@@ -803,14 +806,14 @@ function displayQuestion() {
 }
 
 function checkAnswer(selectedIndex) {
-  if (answered) return; // Stop clicking dummy
+  if (answered) return; // Stop spam-clicking you impatient fuck
   
   answered = true;
   const question = currentQuestions[currentQuestionIndex];
   const answerButtons = document.querySelectorAll('.answer-btn');
   const explanationContainer = document.getElementById('explanation-container');
   
-  // Lock em all down
+  // Lock all buttons so people stop clicking shit after they already answered
   answerButtons.forEach(btn => btn.disabled = true);
   
   if (selectedIndex === question.correct) {
@@ -831,7 +834,8 @@ function checkAnswer(selectedIndex) {
   updateProgress();
 }
 
-// Update the score display - hopefully you're not bombing this
+// Update the score display - hopefully you're not completely bombing this
+// If you're failing at 6 questions you have no business in a helicopter
 function updateProgress() {
   document.getElementById('current-q').textContent = currentQuestionIndex + 1;
   document.getElementById('score').textContent = score;
@@ -858,8 +862,8 @@ function showResults() {
   document.getElementById('exam-progress').classList.add('hidden');
   resultContainer.classList.remove('hidden');
   
-  const percentage = ((score / 30) * 100).toFixed(1);
-  const passed = score >= 27;
+  const percentage = ((score / 6) * 100).toFixed(1);
+  const passed = score >= 6;
   
   resultContainer.innerHTML = `
     <div class="result-screen ${passed ? 'pass' : 'fail'}">
@@ -928,7 +932,7 @@ function handleFormSubmit(e) {
   const availabilityUser = document.getElementById('availability').value;
   
   const examType = 'Little Bird';
-  const percentage = ((score / 30) * 100).toFixed(1);
+  const percentage = ((score / 6) * 100).toFixed(1);
 
   const discordPayload = {
     username: "Wardogs Flight Command",
@@ -945,7 +949,7 @@ function handleFormSubmit(e) {
           },
           {
             name: "🛸 Exam Performance",
-            value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 30 (${percentage}%)`,
+            value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 6 (${percentage}%)`,
             inline: false
           },
           {
@@ -992,7 +996,7 @@ function handleFormSubmit(e) {
     formResponse.innerHTML = `
       <div class="success-message" style="border-color: var(--tactical-red);">
         <h3 style="color: var(--tactical-red); margin-bottom: 20px;">⚠️ TRANSMISSION ERROR</h3>
-        <p>There was a connection issue forwarding your application to our database. Please take a screenshot of your passing score (${score}/30) and contact an instructor directly on Discord.</p>
+        <p>There was a connection issue forwarding your application to our database. Please take a screenshot of your passing score (${score}/6) and contact an instructor directly on Discord.</p>
       </div>
     `;
   });

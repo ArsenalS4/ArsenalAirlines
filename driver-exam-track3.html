@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Driver Exam — Track 3: Weaponized | WARDOGS</title>
-  <meta name="description" content="Wardogs Weaponized Driver/Operator Examination — written test for Track 3 (Weaponized vehicles). 30 questions, 90% pass required.">
+  <title>Track 3 Driver Exam - Weaponized Vehicle & Armor Certification (WARDOGS)</title>
+  <meta name="description" content="WARDOGS Track 3 Weaponized driver exam. 6 questions on tank operations, armor angling, hull-down tactics, main gun systems, and APC operations. 90% pass required. Free armor certification test.">
+  <meta name="keywords" content="WARDOGS armor exam, Track 3 driver test, tank driver license, weaponized vehicle certification, APC operator exam, armor angling tactics, hull-down positioning, main battle tank test, IFV certification, artillery operations, tank gunner exam, armor crew training">
   <link rel="canonical" href="https://wardogspilots.com/driver-exam-track3.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Driver Exam — Track 3: Weaponized" />
@@ -58,7 +59,7 @@
       <div id="exam-progress" class="exam-progress">
         <div class="progress-item">
           <div class="progress-label">Question</div>
-          <div class="progress-value"><span id="current-q">1</span>/30</div>
+          <div class="progress-value"><span id="current-q">1</span>/6</div>
         </div>
         <div class="progress-item">
           <div class="progress-label">Correct</div>
@@ -438,7 +439,7 @@
   }
 
   function initExam() {
-    currentQuestions = shuffleArray(QUESTION_POOL).slice(0, 30);
+    currentQuestions = shuffleArray(QUESTION_POOL).slice(0, 6);
     
     // Shuffle answers for each question
     currentQuestions.forEach(q => {
@@ -462,7 +463,7 @@
     
     container.innerHTML = `
       <div class="question-card">
-        <div class="question-number">Question ${currentQuestionIndex + 1} of 30</div>
+        <div class="question-number">Question ${currentQuestionIndex + 1} of 6</div>
         <div class="question-text">${question.question}</div>
         <div class="answers" id="answers"></div>
         <div id="explanation-container"></div>
@@ -536,13 +537,13 @@
       document.getElementById('exam-progress').classList.add('hidden');
       resultContainer.classList.remove('hidden');
 
-      const percentage = ((score / 30) * 100).toFixed(1);
-      const passed = score >= 27; // 90% of 30 is 27
+      const percentage = ((score / 6) * 100).toFixed(1);
+      const passed = score >= 6; // 90% of 6 requires perfect score
 
       resultContainer.innerHTML = `
       <div class="result-screen ${passed ? 'pass' : 'fail'}">
         <div class="result-status">${passed ? 'PASS' : 'FAIL'}</div>
-        <div class="result-score">${score} / 30 (${percentage}%)</div>
+        <div class="result-score">${score} / 6 (${percentage}%)</div>
         <div class="result-message">
           ${passed
               ? 'You have passed the Weaponized written examination. Complete the form below to schedule your in-game practical evaluation with a driver instructor.'
@@ -608,7 +609,7 @@
 
       // Detect which exam they completed based on page URL
       let examType = 'Weaponized';
-      const percentage = ((score / 30) * 100).toFixed(1);
+      const percentage = ((score / 6) * 100).toFixed(1);
 
       // Format a tactical Discord embed payload
       const discordPayload = {
@@ -626,7 +627,7 @@
                       },
                       {
                           name: "🛞 Driver Track",
-                          value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 30 (${percentage}%)`,
+                          value: `**Aircraft Track:** ${examType}\n**Score:** ${score} / 6 (${percentage}%)`,
                           inline: false
                       },
                       {
@@ -676,7 +677,7 @@
               formResponse.innerHTML = `
         <div class="success-message" style="border-color: var(--tactical-red);">
           <h3 style="color: var(--tactical-red); margin-bottom: 20px;">⚠️ TRANSMISSION ERROR</h3>
-          <p>There was a connection issue forwarding your application to ground command. Please take a screenshot of your passing score (${score}/30) and contact a driving instructor directly on Discord.</p>
+          <p>There was a connection issue forwarding your application to ground command. Please take a screenshot of your passing score (${score}/6) and contact a driving instructor directly on Discord.</p>
         </div>
       `;
           });
