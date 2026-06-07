@@ -868,7 +868,7 @@ function showResults() {
   resultContainer.innerHTML = `
     <div class="result-screen ${passed ? 'pass' : 'fail'}">
       <div class="result-status">${passed ? 'PASS' : 'FAIL'}</div>
-      <div class="result-score">${score} / 30 (${percentage}%)</div>
+      <div class="result-score">${score} / 6 (${percentage}%)</div>
       <div class="result-message">
         ${passed 
           ? 'You have passed the Little Bird written examination. Complete the form below to schedule your in-game practical check ride with an instructor.'
